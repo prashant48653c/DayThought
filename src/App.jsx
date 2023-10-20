@@ -7,6 +7,7 @@ import Popular from './components/Popular'
 import BlogList from './components/BlogList'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import Blog from './components/Blog'
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
         <BlogList />
         <Contact />
         <Footer />
+
+        {/* <Blog/> */}
 
 
 

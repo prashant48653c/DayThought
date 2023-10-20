@@ -12,8 +12,11 @@ const Footer = () => {
     gap:"2rem",
     justifyContent:"center",
     flexDirection:"column",
-    alignItems:"center"
+    alignItems:"center",
+    margin:"3rem 0",
+    height:"10rem"
 }} >
+
     <Box sx={{
          display:"flex",
          gap:"2rem",
@@ -52,11 +55,15 @@ const Footer = () => {
    
 
   <Typography variant="p" color="initial"  align='center'>
-  Copyright ©2023 All rights reserved | This template is made  by Prashant Acharya
-  <br />
-
-Terms & Conditions/ Privacy Policy
+  Copyright ©2023 All rights reserved | This website is made by Prashant Acharya
   </Typography>
+
+  <Typography variant="p" color="initial"  align='center'>
+
+  Terms & Conditions/ Privacy Policy
+  </Typography>
+
+ 
 </Box>
 
 </>

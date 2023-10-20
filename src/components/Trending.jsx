@@ -2,46 +2,95 @@ import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
-import { Box, Typography, Container } from '@mui/material';
+import { Box, Typography, Container,Grid } from '@mui/material';
 const Trending = () => {
-    return (
-        <>
-        <Swiper
-          spaceBetween={50}
-          slidesPerView={1}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
-        >
-          <SwiperSlide>
-            <Container maxWidth="lg">
-              this is slide one
-              <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" alt="" />
-            </Container>
-          </SwiperSlide>
-          <SwiperSlide> 
+  return (
+    <>
+      <Box p={8} sx={{
+        textAlign: "center"
+      }} >
+        <Typography variant="h3" sx={{
+          fontWeight: "800",
+          letterSpacing: 0.6
+        }} color="initial">Trending</Typography>
+      </Box>
+      <Swiper
+        spaceBetween={50}
+        slidesPerView={1}
+        onSlideChange={() => console.log('slide change')}
+        onSwiper={(swiper) => console.log(swiper)}
+      >
+
+
+
+        <SwiperSlide style={{
+          width:"100%"
+        }}>
+          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Grid item xs={6}>
+              
+              <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg"  alt="" /> 
+             
+            </Grid>
+            <Grid item  p={9} xs={6}>
+
+              <Typography variant="p"    sx={{
+                fontSize:"1.7rem"
+              }} color="initial">
+              <b>Business-Travel</b>  <em>July 05</em> 
+              </Typography>
+             
+              
+                <Typography variant="h3"   sx={{
+                  fontWeight:"800",
+                  maxWidth:"80%"
+                }} color="initial">
+                  How to make yourself happy without any tension and anxiety
+                </Typography>
+
+                <Typography variant="p"   sx={{
+                  fontWeight:"500",
+                  fontSize:"1.8rem",
+                  maxWidth:"80%"
+                }} color="initial">
+                  Horses typically have a strong and muscular body with four long legs, a flowing mane, and a tail. Their coat can come in various colors and patterns, including bay, chestnut, black, white, and gray. Some horses have distinct markings on their faces or legs.
+                </Typography>
+
+
+                <Box>
+                  <Typography variant="p" color="initial">Prashant Acharya</Typography>
+                  <em>CEO and Founder</em>
+                </Box>
+             
+            </Grid>
+
+          </Grid>
+        </SwiperSlide>
+
+
+
+        <SwiperSlide>
           <Container maxWidth="lg">
-              this is slide one
-              <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" alt="" />
-            </Container>
-          </SwiperSlide>
-          <SwiperSlide> 
+            this is slide one
+            <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" alt="" />
+          </Container>
+        </SwiperSlide>
+        <SwiperSlide>
           <Container maxWidth="lg">
-              this is slide one
-              <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" alt="" />
-            </Container>
-          </SwiperSlide> <SwiperSlide> 
+            this is slide one
+            <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" alt="" />
+          </Container>
+        </SwiperSlide> <SwiperSlide>
           <Container maxWidth="lg">
-              this is slide one
-              <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" alt="" />
-            </Container>
-          </SwiperSlide>
-          
-        </Swiper>
-        <Box>
-            <Typography variant="h4" color="initial">Trending</Typography>
-        </Box>
-        </>
-      );
+            this is slide one
+            <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" alt="" />
+          </Container>
+        </SwiperSlide>
+
+      </Swiper>
+
+    </>
+  );
 }
 
 export default Trending
