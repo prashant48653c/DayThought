@@ -4,7 +4,7 @@ import Navbar from './components/Navbar'
 import PostBox from './components/PostBox'
 import Container from '@mui/material/Container'
 import Popular from './components/Popular'
-import BlogList from './components/BlogList'
+ 
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Blog from './components/Blog'
@@ -17,23 +17,23 @@ function App() {
     <>
       <Navbar />
       <Container sx={{
-        marginX:"3rem"
+       margin:"0rem 2rem"
       }} maxWidth="xl">
 
 
-        <Trending />
+        {/* <Trending />
         <PostBox />
-        <Popular />
-        <BlogList />
-        <Contact />
-        <Footer />
+        <Popular /> */}
+      
+      
 
-        {/* <Blog/> */}
+        <Blog/>
 
 
 
       </Container>
-
+      <Contact />
+        <Footer />
     </>
   )
 }

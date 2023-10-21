@@ -12,7 +12,7 @@ const PostBox = () => {
         justifyContent:"flex-start",
         gap:"6rem",
         alignItems:"center",
-        border:"1px solid black"
+        
       }} height={"auto"} py={5} container rowSpacing={4} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 
         <Grid ml={3} p={2} sm={3} sx={{

@@ -1,17 +1,34 @@
 import React from 'react'
 import Typography from '@mui/material/Typography'
-import { Button, TextField } from '@mui/material'
+import { Button, Container, TextField } from '@mui/material'
 import { Box, Paper } from '@mui/material'
 
 const Contact = () => {
   return (
     <>
-    <Box>
-        <Typography variant="h5" color="initial">Contact us</Typography>
-        <TextField fullWidth label="fullWidth" id="fullWidth" />
-        <Button variant="contained"  >
-  Send
-</Button>
+   
+    <Box my={4} p={7} sx={{
+      background:"#F5F5F5",
+      width:"100%",
+   
+    }} >
+        <Typography mb={2} variant="h3" sx={{
+          fontWeight: "700",
+         
+          fontSize:"3rem",
+          lineHeight:"4.8rem"
+
+        }} color="initial">Contact us</Typography>
+      <Box   sx={{
+           display:"flex",
+           justifyContent:"flex-start",
+           gap:"4rem"
+      }}>
+ <input placeholder='Enter your email' type="email" name="email" id="email" />
+        <button className='btn-sub'> Subscribe</button>
+      </Box>
+       
+       
     </Box>
 
     </>

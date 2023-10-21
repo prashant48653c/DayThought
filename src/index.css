@@ -25,9 +25,51 @@ img{
 }
  
 .profile-pic{
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   background-color: antiquewhite; 
   border-radius: 40rem;
 
+}
+#email{
+  padding: .5rem;
+  font-size: 2rem;
+ width: 80rem;
+ height: 5rem;
+ border: 1px solid gray;
+ outline: none;
+ border-radius: .5rem;
+}
+.btn-sub{
+  background-color: #F99417;
+  color: white;
+  height: 5rem;
+  outline: none;
+  border: none;
+  border-radius: 3rem;
+  width: 22rem;
+  font-weight: 700;
+  transition: all .4s ease;
+}
+.btn-sub:hover{
+  cursor: pointer;
+  background-color:white ;
+  color:#F99417 ;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.profile-pic-blog{
+  width: 8rem;
+  height: 8rem;
+  border-radius: 40rem;
+  margin-bottom: 1rem;
+}
+.blog-img{
+  width: 80%;
+  height: 80%;
+  border-radius: 1rem;
+  margin: 1.5rem 0;
+}
+.pre{
+  white-space: pre-wrap;
+  font-size: 1.6rem;
 }

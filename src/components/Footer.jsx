@@ -14,7 +14,7 @@ const Footer = () => {
     flexDirection:"column",
     alignItems:"center",
     margin:"3rem 0",
-    height:"10rem"
+    height:"16rem"
 }} >
 
     <Box sx={{
@@ -61,6 +61,11 @@ const Footer = () => {
   <Typography variant="p" color="initial"  align='center'>
 
   Terms & Conditions/ Privacy Policy
+  </Typography>
+
+  <Typography variant="p" color="initial"  align='center'>
+
+ Template from Colorlib
   </Typography>
 
  
