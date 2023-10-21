@@ -1,13 +1,16 @@
 import { useState } from 'react'
-import Trending from './components/Trending'
+ import React from 'react'
 import Navbar from './components/Navbar'
-import PostBox from './components/PostBox'
+ 
 import Container from '@mui/material/Container'
-import Popular from './components/Popular'
+ 
  
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Blog from './components/Blog'
+import { BrowserRouter, Routes,Route } from 'react-router-dom'
+import Home from './components/Home'
+import Write from './components/Write'
 
 
 function App() {
@@ -15,24 +18,31 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <Container sx={{
-       margin:"0rem 2rem"
-      }} maxWidth="xl">
+   
+
+<BrowserRouter>
+<Navbar />
+<Routes>
+
+  <Route path='/' element={ <Home/> } />
+  <Route path='/blog' element={ <Blog/> } />
+<Route path='/write' element={ <Write/> } />
+
+   
+</Routes>
 
 
-        {/* <Trending />
-        <PostBox />
-        <Popular /> */}
+</BrowserRouter>
+
+        
       
       
 
-        <Blog/>
+        {/* <Blog/> */}
 
 
 
-      </Container>
-      <Contact />
+   
         <Footer />
     </>
   )

@@ -4,6 +4,7 @@ import profilePic from '../assets/ph.webp'
 import f from '../assets/f.jpeg'
 import Contact from './Contact'
 import Footer from './Footer'
+import Navbar from './Navbar'
 
 const Blog = () => {
   const htmlContent = `Captain Jack Sparrow, a character immortalized by Johnny Depp in the "Pirates of the Caribbean" film series, is one of the most iconic and enigmatic pirates in cinematic history. With his swagger, wits, and unique style, Jack Sparrow has left an indelible mark on the hearts of moviegoers worldwide. In this essay, we will explore the captivating persona and adventures of this legendary pirate.
@@ -48,6 +49,8 @@ Captain Jack Sparrow is a character who defies traditional conventions and has c
 
   return (
    <>
+ 
+
     <Box mt={5} pt={5} mx={20}  >
 
 <Box py={4} pb={3} sx={{
@@ -91,6 +94,7 @@ Captain Jack Sparrow is a character who defies traditional conventions and has c
 
     </Box>
 
+    <Contact />
     
      
     </>

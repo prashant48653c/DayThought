@@ -73,3 +73,13 @@ img{
   white-space: pre-wrap;
   font-size: 1.6rem;
 }
+.write-blog{
+  max-width: 100%;
+padding: 2rem;
+  height: 70vh;
+ 
+}
+.write-blog-heading{
+  max-width: 100%;
+  padding: 2rem;
+}
