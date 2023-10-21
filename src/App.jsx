@@ -11,6 +11,7 @@ import Blog from './components/Blog'
 import { BrowserRouter, Routes,Route } from 'react-router-dom'
 import Home from './components/Home'
 import Write from './components/Write'
+import Profile from './components/Profile'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
   <Route path='/' element={ <Home/> } />
   <Route path='/blog' element={ <Blog/> } />
 <Route path='/write' element={ <Write/> } />
+<Route path='/profile' element={ <Profile/> } />
 
    
 </Routes>

@@ -83,3 +83,7 @@ padding: 2rem;
   max-width: 100%;
   padding: 2rem;
 }
+.edit-blog:hover{
+  opacity: .6;
+  cursor: pointer;
+}
