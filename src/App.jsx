@@ -16,7 +16,9 @@ function App() {
   return (
     <>
       <Navbar />
-      <Container maxWidth="xl">
+      <Container sx={{
+        marginX:"3rem"
+      }} maxWidth="xl">
 
 
         <Trending />
