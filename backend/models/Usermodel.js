@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const userSchema = new mongoose.Schema({
-    "id": 1,
+    
     "name": {
         type: String
     },
@@ -15,9 +15,10 @@ const userSchema = new mongoose.Schema({
         required: true
     },
 
-    profilePicture: { type: String },
+    profilePicture: { type: String , default:"https://img.freepik.com/premium-vector/gray-avatar-icon-vector-illustration_276184-163.jpg"},
     description: {
         type: String,
+        default:"New User at The Day Thought"
 
     }
 
