@@ -1,7 +1,7 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const User = require("../models/UserModel.js")
-
+const bcript=require("bcrypt")
 const router = express.Router();
 router.use(express.json())
 
@@ -29,11 +29,11 @@ router.post("/login",async (req, res) => {
             res.status(400).json({ messege: "Fill the credential properly" });
         }
         const oldUser=await User.findOne({email:email})
-        const matched= oldUser.password
+        const matched=bcript.compare(password,oldUser.password)
         if(!oldUser){
             res.status(404).json({messege:"User not found"})
         }
-        if(matched === password){
+        if(matched){
             res.status(200).json({messege:"Succesfull login"})
         }
     }catch(err){
