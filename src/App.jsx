@@ -14,6 +14,8 @@ import Write from './components/Write'
 import Profile from './components/Profile'
 import Login from './components/Login'
 import Signup from './components/Signup'
+import Join from './components/Join'
+import Option from './components/Option'
 
 
 function App() {
@@ -31,8 +33,9 @@ function App() {
   <Route path='/blog' element={ <Blog/> } />
 <Route path='/write' element={ <Write/> } />
 <Route path='/profile' element={ <Profile/> } />
-<Route path='/login' element={ <Login/> } />
-<Route path='/signup' element={ <Signup/> } />
+<Route path='/join' element={ <Join/> } />
+<Route path='/option' element={ <Option/> } />
+ 
 
 
 
