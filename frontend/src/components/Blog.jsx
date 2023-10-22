@@ -60,7 +60,7 @@ Captain Jack Sparrow is a character who defies traditional conventions and has c
              flexDirection:"column",
              alignItems:"center"
             }} >
-              <img src={"https://scontent.fktm3-1.fna.fbcdn.net/v/t39.30808-6/271910032_1944517802386013_4212220958611674125_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=xFrsIGgFKZ4AX_pZNa5&_nc_ht=scontent.fktm3-1.fna&oh=00_AfAZTGeAh9N0s4DXH4Uz2AswHBDHqkhi7jVahrsgObQy3w&oe=65391392"} className='profile-pic-blog' alt="" />
+              <img src={ profilePic} className='profile-pic-blog' alt="" />
               <div  >
                 <Typography sx={{
                   display: "block",

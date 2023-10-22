@@ -5,11 +5,12 @@ import 'swiper/css';
 import 'swiper/css/bundle'; 
  
 import { Box, Typography, Container, Grid } from '@mui/material';
-const Trending = () => {
  
-  return (
-    <>
-      <Box p={8} sx={{
+ 
+const Popular = () => {
+    return (
+        <>
+         <Box p={8} sx={{
         textAlign: "center"
       }} >
         <Typography variant="h3" sx={{
@@ -18,7 +19,7 @@ const Trending = () => {
           fontSize:"4rem",
           lineHeight:"4.8rem"
 
-        }} color="initial">Trending</Typography>
+        }} color="initial">Most Popular Post</Typography>
       </Box>
       <Swiper
         spaceBetween={50}
@@ -31,16 +32,18 @@ const Trending = () => {
 
 
 
-        <SwiperSlide style={{
-          width: "100%"
+<SwiperSlide style={{
+          width: "100%",
+          height:"35rem",
+          
         }}>
-          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+          <Grid container  rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 1 }}>
             <Grid item xs={6}>
 
-              <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" alt="" />
+              <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" className='swiper-img' alt="" />
 
             </Grid>
-            <Grid item p={9} xs={6}>
+            <Grid item p={9} mt={3} xs={6}>
 
               <Typography variant="p" sx={{
                 fontSize: "1.7rem"
@@ -51,7 +54,7 @@ const Trending = () => {
 
               <Typography variant="h3" sx={{
                fontWeight: "700",
-               letterSpacing: 0.6,
+              
                fontSize:"4rem",
                lineHeight:"4.8rem",
                 maxWidth: "95%"
@@ -68,7 +71,7 @@ const Trending = () => {
               </Typography>
 
 
-              <Box py={1} pb={3} sx={{
+              <Box py={2}   sx={{
               display: "flex",
               gap: "1rem",
               alignItems: "center"
@@ -87,16 +90,20 @@ const Trending = () => {
           </Grid>
         </SwiperSlide>
 
+
+
         <SwiperSlide style={{
-          width: "100%"
+          width: "100%",
+          height:"35rem",
+          
         }}>
-          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+          <Grid container  rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 1 }}>
             <Grid item xs={6}>
 
-              <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" alt="" />
+              <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" className='swiper-img' alt="" />
 
             </Grid>
-            <Grid item p={9} xs={6}>
+            <Grid item p={9} mt={3} xs={6}>
 
               <Typography variant="p" sx={{
                 fontSize: "1.7rem"
@@ -106,41 +113,57 @@ const Trending = () => {
 
 
               <Typography variant="h3" sx={{
-                fontWeight: "800",
-                maxWidth: "80%"
+               fontWeight: "700",
+              
+               fontSize:"4rem",
+               lineHeight:"4.8rem",
+                maxWidth: "95%"
               }} color="initial">
                 How to make yourself happy without any tension and anxiety
               </Typography>
 
               <Typography variant="p" sx={{
-                fontWeight: "500",
-                fontSize: "1.8rem",
-                maxWidth: "80%"
+                fontSize:"1.4rem",
+                fontWeight:400,
+                color:"rgb(136, 136, 136)"
               }} color="initial">
                 Horses typically have a strong and muscular body with four long legs, a flowing mane, and a tail. Their coat can come in various colors and patterns, including bay, chestnut, black, white, and gray. Some horses have distinct markings on their faces or legs.
               </Typography>
 
 
-              <Box>
-                <Typography variant="p" color="initial">Prashant Acharya</Typography>
-                <em>CEO and Founder</em>
-              </Box>
+              <Box py={2}   sx={{
+              display: "flex",
+              gap: "1rem",
+              alignItems: "center"
+            }} >
+              <img src={profilePic} className='profile-pic' alt="" />
+              <div>
+                <Typography sx={{
+                  display: "block"
+                }} variant="p" color="initial">Prashant Acharya</Typography>
+                <Typography variant="p" color="initial">CEO and Developer</Typography>
+              </div>
+            </Box>
 
             </Grid>
 
           </Grid>
         </SwiperSlide>
 
+
+
         <SwiperSlide style={{
-          width: "100%"
+          width: "100%",
+          height:"35rem",
+          
         }}>
-          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+          <Grid container  rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 1 }}>
             <Grid item xs={6}>
 
-              <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" alt="" />
+              <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" className='swiper-img' alt="" />
 
             </Grid>
-            <Grid item p={9} xs={6}>
+            <Grid item p={9} mt={3} xs={6}>
 
               <Typography variant="p" sx={{
                 fontSize: "1.7rem"
@@ -150,41 +173,57 @@ const Trending = () => {
 
 
               <Typography variant="h3" sx={{
-                fontWeight: "800",
-                maxWidth: "80%"
+               fontWeight: "700",
+              
+               fontSize:"4rem",
+               lineHeight:"4.8rem",
+                maxWidth: "95%"
               }} color="initial">
                 How to make yourself happy without any tension and anxiety
               </Typography>
 
               <Typography variant="p" sx={{
-                fontWeight: "500",
-                fontSize: "1.8rem",
-                maxWidth: "80%"
+                fontSize:"1.4rem",
+                fontWeight:400,
+                color:"rgb(136, 136, 136)"
               }} color="initial">
                 Horses typically have a strong and muscular body with four long legs, a flowing mane, and a tail. Their coat can come in various colors and patterns, including bay, chestnut, black, white, and gray. Some horses have distinct markings on their faces or legs.
               </Typography>
 
 
-              <Box>
-                <Typography variant="p" color="initial">Prashant Acharya</Typography>
-                <em>CEO and Founder</em>
-              </Box>
+              <Box py={2}   sx={{
+              display: "flex",
+              gap: "1rem",
+              alignItems: "center"
+            }} >
+              <img src={profilePic} className='profile-pic' alt="" />
+              <div>
+                <Typography sx={{
+                  display: "block"
+                }} variant="p" color="initial">Prashant Acharya</Typography>
+                <Typography variant="p" color="initial">CEO and Developer</Typography>
+              </div>
+            </Box>
 
             </Grid>
 
           </Grid>
         </SwiperSlide>
 
+
+
         <SwiperSlide style={{
-          width: "100%"
+          width: "100%",
+          height:"35rem",
+          
         }}>
-          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+          <Grid container  rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 1 }}>
             <Grid item xs={6}>
 
-              <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" alt="" />
+              <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" className='swiper-img' alt="" />
 
             </Grid>
-            <Grid item p={9} xs={6}>
+            <Grid item p={9} mt={3} xs={6}>
 
               <Typography variant="p" sx={{
                 fontSize: "1.7rem"
@@ -194,42 +233,52 @@ const Trending = () => {
 
 
               <Typography variant="h3" sx={{
-                fontWeight: "800",
-                maxWidth: "80%"
+               fontWeight: "700",
+              
+               fontSize:"4rem",
+               
+                maxWidth: "95%"
               }} color="initial">
                 How to make yourself happy without any tension and anxiety
               </Typography>
 
               <Typography variant="p" sx={{
-                fontWeight: "500",
-                fontSize: "1.8rem",
-                maxWidth: "80%"
+                fontSize:"1.4rem",
+                fontWeight:400,
+                color:"rgb(136, 136, 136)"
               }} color="initial">
                 Horses typically have a strong and muscular body with four long legs, a flowing mane, and a tail. Their coat can come in various colors and patterns, including bay, chestnut, black, white, and gray. Some horses have distinct markings on their faces or legs.
               </Typography>
 
 
-              <Box>
-                <Typography variant="p" color="initial">Prashant Acharya</Typography>
-                <em>CEO and Founder</em>
-              </Box>
+              <Box py={2}   sx={{
+              display: "flex",
+              gap: "1rem",
+              alignItems: "center"
+            }} >
+              <img src={profilePic} className='profile-pic' alt="" />
+              <div>
+                <Typography sx={{
+                  display: "block"
+                }} variant="p" color="initial">Prashant Acharya</Typography>
+                <Typography variant="p" color="initial">CEO and Developer</Typography>
+              </div>
+            </Box>
 
             </Grid>
 
           </Grid>
         </SwiperSlide>
-
 
 
 
 
       </Swiper>
-
-    </>
-  );
+        </>
+      );
 }
 
-export default Trending
+export default Popular
 
 
 

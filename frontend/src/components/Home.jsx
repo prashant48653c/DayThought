@@ -12,9 +12,9 @@ const Home = () => {
   return (
     <>
      
-      <Container sx={{
+      <Container  sx={{
        margin:"0rem 2rem"
-      }} maxWidth="xl">
+      }} maxWidth="xl"  >
 
 <Trending />
         <PostBox />

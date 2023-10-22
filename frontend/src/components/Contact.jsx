@@ -18,7 +18,7 @@ const Contact = () => {
           fontSize:"3rem",
           lineHeight:"4.8rem"
 
-        }} color="initial">Contact us</Typography>
+        }} color="initial">Subscribe </Typography>
       <Box   sx={{
            display:"flex",
            justifyContent:"flex-start",

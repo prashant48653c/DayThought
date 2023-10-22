@@ -17,7 +17,8 @@ export default function Option() {
     <Paper elevation={4} sx={{ width: '100%',
      maxWidth: 200,
       bgcolor: 'background.paper',
-      position:"absolute",
+      position:"fixed",
+      zIndex:111,
       top:90,
       right:22
        }}>
