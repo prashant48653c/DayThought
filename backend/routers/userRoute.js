@@ -2,10 +2,15 @@ const express = require("express")
 const mongoose = require("mongoose")
 const User = require("../models/UserModel.js")
 const bcript=require("bcrypt")
+const cors=require("cors")
 const router = express.Router();
 router.use(express.json())
 
-
+router.use(cors({
+    credentials:true,
+    origin:"http://localhost:5173",
+    methods:"GET,PUT,POST,PATCH,DELETE"
+}))
 
 
 
