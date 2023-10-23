@@ -3,9 +3,9 @@ const mongoose = require("mongoose")
 const User = require("../models/UserModel.js")
 const bcript = require("bcrypt")
 const jwt = require("jsonwebtoken")
-const cookieParser=require("cookie-parser")
+const cookieParser = require("cookie-parser")
 const cors = require("cors")
-const Authenticate=require("../middleware/authenticate.js")
+const Authenticate = require("../middleware/authenticate.js")
 
 //---------------------------------------
 const router = express.Router();
@@ -41,12 +41,12 @@ router.post("/login", async (req, res) => {
             res.status(400).json({ messege: "Fill the credential properly" });
         }
         const oldUser = await User.findOne({ email: email })
-        const matched =await bcript.compare(password, oldUser.password)
+        const matched = await bcript.compare(password, oldUser.password)
         if (!oldUser) {
             res.status(404).json({ messege: "User not found" })
         }
         if (matched) {
-            const token =await oldUser.generateAuthToken()
+            const token = await oldUser.generateAuthToken()
             console.log(token)
             res.cookie("jwtoken", token, {
                 expires: new Date(Date.now() + 25892000000),

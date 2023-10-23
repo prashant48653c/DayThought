@@ -36,18 +36,6 @@ const userSchema = new mongoose.Schema({
 
 
 
-
-
-userSchema.pre('save', async function(next){
-    console.log("Hashing the password");
-    if(this.isModified('password')){
-        this.password= await bcript.hash(this.password,12)
-       
-    }
-    next()
-})
-
-
 userSchema.methods.generateAuthToken = async function (){
     try{
         let token= jwt.sign({_id: this._id}, process.env.SECRET)
@@ -60,6 +48,18 @@ userSchema.methods.generateAuthToken = async function (){
         console.log(`Unable to generate token ${err}`)
     }
 }
+
+userSchema.pre('save', async function(next){
+    console.log("Hashing the password");
+    if(this.isModified('password')){
+        this.password= await bcript.hash(this.password,12)
+       
+    }
+    next()
+})
+
+
+
 
 
 

@@ -12,17 +12,17 @@ const jwt = require("jsonwebtoken")
 // checking whether there is a user with the jwt token getting matched or not
 const Authenticate=async(req,res,next)=>{
     try{
-        let token=await req.cookies.jwtoken;
+        let token=await req.cookie.jwtoken;
         if(!token){
         console.log("Token not available")
             
         }
 
-        const verifyToken=jwt.verify(token, process.env.SECRET)
-        const rootUser=User.findOne({_id:verifyToken._id, "tokens.token":token})
+        const verifyToken= jwt.verify(token, process.env.SECRET)
+        const rootUser=await User.findOne({_id:verifyToken._id, "tokens.token":token})
         if(rootUser){
-            req.token=token;
-            req.rootUser=rootUser;
+            req.token=await token;
+            req.rootUser= rootUser;
             req.userID=rootUser._id;
         }else{
             throw new Error("User not found")
