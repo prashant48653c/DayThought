@@ -5,12 +5,13 @@ const bcript = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const cookieParser=require("cookie-parser")
 const cors = require("cors")
-
+const Authenticate=require("../middleware/authenticate.js")
 
 //---------------------------------------
 const router = express.Router();
-router.use(express.json())
 router.use(cookieParser())
+
+router.use(express.json())
 
 router.use(cors({
     credentials: true,

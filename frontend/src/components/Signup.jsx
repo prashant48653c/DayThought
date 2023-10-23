@@ -17,18 +17,20 @@ function Signup() {
     setUserData({ ...userData, [name]: value });
   };
 
-  const sendCredential =async(e)=>{
-    e.preventDefault()
-    console.log("Started Login process")
-    try{
-      const response=await axios.post(URL,userData)
-    
-   console.log(response.data)
-    }catch(err){
-      console.log(`Error at post in login ${err}`)
+  const sendCredential = async (e) => {
+    e.preventDefault();
+    console.log("Started Login process");
+    try {
+      const response = await axios.post(URL, userData, {
+        withCredentials: true,  
+      });
+  
+      console.log(response.data);
+    } catch (err) {
+      console.log(`Error at post in login ${err}`);
     }
-
-  }
+  };
+  
 
 
 
