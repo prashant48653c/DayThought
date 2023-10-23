@@ -2,7 +2,12 @@ const express = require("express")
 const mongoose = require("mongoose")
 const User = require("../models/UserModel.js")
 const bcript=require("bcrypt")
+const jwt=require("json-web-token")
+
 const cors=require("cors")
+
+
+//---------------------------------------
 const router = express.Router();
 router.use(express.json())
 
@@ -39,6 +44,15 @@ router.post("/login",async (req, res) => {
             res.status(404).json({messege:"User not found"})
         }
         if(matched){
+            const token=oldUser.generateAuthToken()
+            console.log(token)
+            res.cookie("jwtoken",{
+                credentials:"include",
+                httpOnly:true,
+                expires:new Date(Date.now() + 2490000000)
+
+            })
+
             res.status(200).json({messege:"Succesfull login"})
         }
     }catch(err){
@@ -80,7 +94,11 @@ router.post("/signup", async (req, res) => {
 })
 
 
+router.post("/logout", async (req, res) => {
 
+    res.clearCookie("jwtoken")
+    console.log("cookie was cleared")
+})
 
 
 

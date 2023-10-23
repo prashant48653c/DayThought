@@ -19,10 +19,11 @@ function Signup() {
 
   const sendCredential =async(e)=>{
     e.preventDefault()
-    console.log("Registering the user")
+    console.log("Started Login process")
     try{
       const response=await axios.post(URL,userData)
-      console.log(response)
+    
+   console.log(response.data)
     }catch(err){
       console.log(`Error at post in login ${err}`)
     }
