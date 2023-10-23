@@ -1,20 +1,21 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const User = require("../models/UserModel.js")
-const bcript=require("bcrypt")
-const jwt=require("json-web-token")
-
-const cors=require("cors")
+const bcript = require("bcrypt")
+const jwt = require("jsonwebtoken")
+const cookieParser=require("cookie-parser")
+const cors = require("cors")
 
 
 //---------------------------------------
 const router = express.Router();
 router.use(express.json())
+router.use(cookieParser())
 
 router.use(cors({
-    credentials:true,
-    origin:"http://localhost:5173",
-    methods:"GET,PUT,POST,PATCH,DELETE"
+    credentials: true,
+    origin: "http://localhost:5173",
+    methods: "GET,PUT,POST,PATCH,DELETE"
 }))
 
 
@@ -31,35 +32,34 @@ router.get("/userdata", (req, res) => {
 
 
 // /login for posting user credential to the server
-router.post("/login",async (req, res) => {
+router.post("/login", async (req, res) => {
 
-    try{
+    try {
         const { password, email } = req.body;
         if (!password || !email) {
             res.status(400).json({ messege: "Fill the credential properly" });
         }
-        const oldUser=await User.findOne({email:email})
-        const matched=bcript.compare(password,oldUser.password)
-        if(!oldUser){
-            res.status(404).json({messege:"User not found"})
+        const oldUser = await User.findOne({ email: email })
+        const matched =await bcript.compare(password, oldUser.password)
+        if (!oldUser) {
+            res.status(404).json({ messege: "User not found" })
         }
-        if(matched){
-            const token=oldUser.generateAuthToken()
+        if (matched) {
+            const token =await oldUser.generateAuthToken()
             console.log(token)
-            res.cookie("jwtoken",{
-                credentials:"include",
-                httpOnly:true,
-                expires:new Date(Date.now() + 2490000000)
-
+            res.cookie("jwtoken", token, {
+                expires: new Date(Date.now() + 25892000000),
+                httpOnly: true,
+                credentials: "include"
             })
 
-            res.status(200).json({messege:"Succesfull login"})
+            res.status(200).json({ messege: "Succesfull login" })
         }
-    }catch(err){
-        res.status(404).json({messege:"Cannot Login"})
+    } catch (err) {
+        res.status(404).json({ messege: "Cannot Login" })
     }
 
-   
+
 
 
 
@@ -98,6 +98,7 @@ router.post("/logout", async (req, res) => {
 
     res.clearCookie("jwtoken")
     console.log("cookie was cleared")
+    res.status(200).json({ messege: "User has been logged out" })
 })
 
 
