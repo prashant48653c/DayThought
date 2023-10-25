@@ -51,7 +51,8 @@ router.post("/login", async (req, res) => {
             res.cookie("jwtoken", token, {
                 expires: new Date(Date.now() + 25892000000),
                 httpOnly: true,
-                credentials: "include"
+                credentials: "include",
+                secure:true
             })
 
             res.status(200).json({ messege: "Succesfull login" })
