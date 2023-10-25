@@ -96,11 +96,16 @@ router.post("/signup", async (req, res) => {
 })
 
 
-router.post("/logout", async (req, res) => {
+router.get("/logout", async (req, res) => {
+    try{
+        res.clearCookie('jwtoken', { path: '/'});
+        console.log("cookie was cleared")
+        res.status(200).json({ messege: "User has been logged out" })
+    }catch(err){
+console.log(err)
+    }
 
-    res.clearCookie("jwtoken")
-    console.log("cookie was cleared")
-    res.status(200).json({ messege: "User has been logged out" })
+
 })
 
 

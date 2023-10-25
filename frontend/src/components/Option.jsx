@@ -8,8 +8,29 @@ import Divider from '@mui/material/Divider';
 import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import { Paper } from '@mui/material';
+import axios from 'axios';
 
 export default function Option() {
+  const URL="http://localhost:4000/logout";
+
+  const logout=async(e)=>{
+    e.preventDefault()
+    try {
+      const response = await axios.get(URL, {
+        withCredentials: true, // Include this to send cookies
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("Successfully logged out", response);
+    } catch (error) {
+      console.log(error)
+    }
+
+
+
+  }
   const [selectedIndex, setSelectedIndex] = React.useState(1);
 
  
@@ -25,7 +46,7 @@ export default function Option() {
       <List component="nav" aria-label="main mailbox folders">
         <ListItemButton
           selected={selectedIndex === 0}
-          onClick={(event) => handleListItemClick(event, 0)}
+     
         >
           <ListItemIcon>
             <InboxIcon />
@@ -34,7 +55,7 @@ export default function Option() {
         </ListItemButton>
         <ListItemButton
           selected={selectedIndex === 1}
-          onClick={(event) => handleListItemClick(event, 1)}
+          
         >
           <ListItemIcon>
             <DraftsIcon />
@@ -46,10 +67,10 @@ export default function Option() {
       <List component="nav" aria-label="secondary mailbox folder">
         <ListItemButton
           selected={selectedIndex === 2}
-          onClick={(event) => handleListItemClick(event, 2)}
+          onClick={logout}
         >
          
-          <ListItemText primary="Logout" />
+          <ListItemText  primary="Logout" />
         </ListItemButton>
       </List>
     </Paper>
