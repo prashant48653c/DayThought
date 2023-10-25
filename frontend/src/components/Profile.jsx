@@ -7,19 +7,27 @@ import axios from 'axios'
 const Profile = () => {
 
 const [userData,setUserData]=useState([])
+
 const URL="http://localhost:4000/getdata";
 
-const getData=async()=>{
-try{
-  const response=await axios.get(URL);
-  console.log(response)
-}catch(err){
-  console.log(err)
-}
- 
 
+const getData = async () => {
+  try {
+    const response = await axios.get(URL, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      withCredentials: true
+    });
+    
+    const data = response.data;
+    console.log(data);
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
+};
 
-}
 useEffect(()=>{
   getData()
 },[])

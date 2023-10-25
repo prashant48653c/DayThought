@@ -9,7 +9,10 @@ const cookieParser=require("cookie-parser")
 //-----------------------------------
 dotenv.config({path: "./.env"})
 const app=express()
-app.use(cookieParser())
+app.use(cookieParser(process.env.COOKIE_SECRET, {
+    secure: true, // Set the Secure attribute
+    sameSite: 'none', // Set the SameSite attribute if necessary
+  }));
 
 const PORT= process.env.PORT || 4000;
 app.use(router)
