@@ -1,11 +1,47 @@
 import { Box, Container, Grid, Link, Paper, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import f from '../assets/f.jpeg'
 import profilePic from '../assets/ph.webp'
 import PostBox from './PostBox'
+import axios from 'axios'
 const Profile = () => {
+
+const [userData,setUserData]=useState([])
+const URL="http://localhost:4000/getdata";
+
+const getData=async()=>{
+try{
+  const response=await axios.get(URL);
+  console.log(response)
+}catch(err){
+  console.log(err)
+}
+ 
+
+
+}
+useEffect(()=>{
+  getData()
+},[])
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <>
+
+    
+
+
+
   <Container sx={{
        margin:"0rem 2rem"
       }} maxWidth="xl">
@@ -37,7 +73,7 @@ const Profile = () => {
 
             </Box>
 
-<PostBox/>
+{/* <PostBox/> */}
         </Container>
 
 
