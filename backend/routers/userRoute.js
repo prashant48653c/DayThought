@@ -7,9 +7,11 @@ const cookieParser = require("cookie-parser")
 const cors = require("cors")
 const Authenticate = require("../middleware/authenticate.js")
 
+const dotenv=require("dotenv")
 //---------------------------------------
 const router = express.Router();
 router.use(cookieParser())
+dotenv.config({path: "./.env"})
 
 router.use(express.json())
 
@@ -23,8 +25,11 @@ router.use(cors({
 
 // /userdata is the route where the information about user and the blog will be sent. this endpoint is responsible when user view other user's profile and when view it's own profile and tries to login 
 
-router.get("/getdata" , async (req, res) => {
-    const data =  req.rootUser
+router.get("/getdata", Authenticate , async (req, res) => {
+   let token=await req.cookies.jwtoken
+   console.log(token)
+    const data =await req.rootUser
+    console.log(req.cookies)
     if (!data) {
         res.status(400).json({ error: "New user" })
     }else{

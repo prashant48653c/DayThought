@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
         required: true
     },
 
-    profilePicture: { type: String , default:"https://img.freepik.com/premium-vector/gray-avatar-icon-vector-illustration_276184-163.jpg"},
+    profilePicture: { type: String , default:"https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-man-wearing-glasses-is-wearing-colorful-background-image_2905240.jpg"},
     description: {
         type: String,
         default:"New User at The Day Thought"

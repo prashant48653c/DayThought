@@ -16,6 +16,7 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import Join from './components/Join'
 import Option from './components/Option'
+import Editor from './components/Editor'
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
 <Route path='/profile' element={ <Profile/> } />
 <Route path='/join' element={ <Join/> } />
 <Route path='/option' element={ <Option/> } />
+<Route path='/editor' element={ <Editor/> } />
  
 
 
