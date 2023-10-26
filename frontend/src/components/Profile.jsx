@@ -63,7 +63,7 @@ useEffect(()=>{
              flexDirection:"column",
              alignItems:"center"
             }} >
-              <img src={userData.profilePic} className='profile-pic-blog edit-blog ' alt="" />
+              <img src={userData.profilePicture} className='profile-pic-blog edit-blog ' alt="" />
               <div  >
                 <Typography sx={{
                   display: "block",

@@ -156,6 +156,45 @@ router.post("/postBlog",Authenticate, async (req, res) => {
 
 
 
+router.patch("/updateProfile",Authenticate, async (req, res) => {
+
+    try {
+        const {name,description ,profilePicture} =await req.body;
+        
+        
+        const userId= await req.userID
+        
+        const oldUser = await User.findOne({ _id: userId })
+         
+        if (!oldUser) {
+            res.status(404).json({ messege: "User not found" })
+        }else{
+            const result = await User.findOneAndUpdate({ _id: userId }, {
+                $set: {
+                  name: name,
+                
+                 
+                  description: description
+                }
+              });
+              await oldUser.save()
+               
+              res.status(200).json({ message: "Profile updated successfully" });
+
+        }
+      
+    } catch (err) {
+        console.log(err)
+        res.status(404).json({ messege: "Cannot post the blog" })
+    }
+
+
+
+
+
+
+
+})
 
 
 

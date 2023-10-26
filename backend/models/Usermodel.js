@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const bcript=require("bcrypt")
+const bcrypt=require("bcrypt")
 const jwt=require("jsonwebtoken")
 
 const userSchema = new mongoose.Schema({
@@ -74,14 +74,21 @@ userSchema.methods.takeBlog = async function (heading,blog){
 }
 
 
-userSchema.pre('save', async function(next){
+
+
+userSchema.pre('save', async function (next) {
     console.log("Hashing the password");
-    if(this.isModified('password')){
-        this.password= await bcript.hash(this.password,12)
-       
+    if (this.isModified('password')) {
+      try {
+        this.password = await bcrypt.hash(this.password, 12);
+      } catch (error) {
+        return next(error);
+      }
     }
-    next()
-})
+    next();
+  });
+  
+
 
 
 
