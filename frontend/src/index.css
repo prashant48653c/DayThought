@@ -92,3 +92,9 @@ width: 95%;
   height: 35rem;
   border-radius: 1rem;
 }
+
+
+ #root{
+  width: 100%;
+  max-width: 100%;
+ }

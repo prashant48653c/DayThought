@@ -172,8 +172,6 @@ router.patch("/updateProfile",Authenticate, async (req, res) => {
             const result = await User.findOneAndUpdate({ _id: userId }, {
                 $set: {
                   name: name,
-                
-                 
                   description: description
                 }
               });

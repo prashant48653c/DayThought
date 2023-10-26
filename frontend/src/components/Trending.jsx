@@ -8,15 +8,23 @@ import { Box, Typography, Container, Grid } from '@mui/material';
 const Trending = () => {
  
   return (
-    <>
-      <Box p={8} sx={{
-        textAlign: "center"
+    <Box sx={{
+      margin:0,
+      padding:0,
+      border:"1px solid black",
+      width:"100%"
+    }} >
+      <Box py={8} sx={{
+        textAlign: "center",
+        background:"red",
+        width:"100%"
       }} >
         <Typography variant="h3" sx={{
           fontWeight: "700",
          
           fontSize:"4rem",
-          lineHeight:"4.8rem"
+          lineHeight:"4.8rem",
+          width:"100%"
 
         }} color="initial">Trending</Typography>
       </Box>
@@ -27,6 +35,11 @@ const Trending = () => {
       
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
+        style={{
+          width: "100%",
+          height:"35rem",
+        }}
+       
       >
 
 
@@ -36,13 +49,16 @@ const Trending = () => {
           height:"35rem",
           
         }}>
-          <Grid container  rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 1 }}>
+          <Grid container  style={{
+          width: "100%",
+          height:"35rem",
+        }}  rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 1 }}>
             <Grid item xs={6}>
 
               <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" className='swiper-img' alt="" />
 
             </Grid>
-            <Grid item p={9} mt={3} xs={6}>
+            <Grid item py={9} mt={3} xs={6}>
 
               <Typography variant="p" sx={{
                 fontSize: "1.7rem"
@@ -56,7 +72,7 @@ const Trending = () => {
               
                fontSize:"4rem",
                lineHeight:"4.8rem",
-                maxWidth: "95%"
+                maxWidth: "100%"
               }} color="initial">
                 How to make yourself happy without any tension and anxiety
               </Typography>
@@ -115,7 +131,7 @@ const Trending = () => {
               
                fontSize:"4rem",
                lineHeight:"4.8rem",
-                maxWidth: "95%"
+               maxWidth: "100%"
               }} color="initial">
                 How to make yourself happy without any tension and anxiety
               </Typography>
@@ -174,7 +190,7 @@ const Trending = () => {
               
                fontSize:"4rem",
                lineHeight:"4.8rem",
-                maxWidth: "95%"
+               maxWidth: "100%"
               }} color="initial">
                 How to make yourself happy without any tension and anxiety
               </Typography>
@@ -234,7 +250,7 @@ const Trending = () => {
               
                fontSize:"4rem",
                lineHeight:"4.8rem",
-                maxWidth: "95%"
+                maxWidth: "100%"
               }} color="initial">
                 How to make yourself happy without any tension and anxiety
               </Typography>
@@ -275,7 +291,7 @@ const Trending = () => {
 
       </Swiper>
 
-    </>
+    </Box>
   );
 }
 

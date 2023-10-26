@@ -8,18 +8,26 @@ import Popular from './Popular'
 import Contact from './Contact'
 import Footer from './Footer'
 import Blog from './Blog'
+import { Box } from '@mui/material'
 const Home = () => {
   return (
     <>
      
-      <Container  sx={{
-       margin:"0rem 2rem"
-      }} maxWidth="xl"  >
+      <Box  sx={{
+        width:"100%",
+       border:"1px solid red",
+        padding:"0 2rem",
+        display:"flex",
+        flexDirection:"column",
+        alignItems:"center",
+        
+    
+      }}    >
 
 <Trending />
         <PostBox />
         <Popular />
-      </Container>
+      </Box>
       <Contact />
  
         

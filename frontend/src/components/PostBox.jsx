@@ -1,10 +1,15 @@
-import { Box, Grid, Paper, Typography } from '@mui/material'
+import { Box, Container, Grid, Paper, Typography } from '@mui/material'
 import React from 'react'
 import f from '../assets/f.jpeg'
 import profilePic from '../assets/ph.webp'
 const PostBox = () => {
   return (
-    <>
+    <Container sx={{
+      margin:0,
+      padding:0,
+      border:"1px solid black",
+       maxWidth:"100%"
+    }} >
 
       <Grid my={4}  sx={{
        maxWidth: "100%",
@@ -327,7 +332,7 @@ const PostBox = () => {
 
 
 
-    </>
+    </Container>
 
 
   )
