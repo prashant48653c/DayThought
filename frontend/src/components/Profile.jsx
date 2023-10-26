@@ -1,9 +1,10 @@
-import { Box, Container, Grid, Link, Paper, Typography } from '@mui/material'
+import { Box, Container, Grid, Paper, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import f from '../assets/f.jpeg'
 import profilePic from '../assets/ph.webp'
 import PostBox from './PostBox'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 const Profile = () => {
 
 const [userData,setUserData]=useState([])
@@ -71,7 +72,9 @@ useEffect(()=>{
                 <Typography variant="h6" p={1} sx={{
                     fontSize:"1.5rem"
                 }} color="initial">CEO and Developer</Typography>
-                <Link sx={{
+                <Link
+                to={"/editor"}
+                sx={{
                     color:"green",
                     
                 }} >Edit Profile</Link>
@@ -81,7 +84,7 @@ useEffect(()=>{
 
             </Box>
 
-{/* <PostBox/> */}
+<PostBox/>
         </Container>
 
 
