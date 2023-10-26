@@ -18,17 +18,17 @@ function Login() {
     e.preventDefault()
     console.log("Logging the user")
     try {
-      // Send the POST request with credentials and appropriate headers
+  
       const response = await axios.post(URL, userData, {
         headers: {
-          'Content-Type': 'application/json', // Set the content type to JSON
-          Authorization: 'Bearer YourAccessToken', // Include authorization token if required
-          // Other headers can be added here
+          'Content-Type': 'application/json', 
+          Authorization: 'Bearer YourAccessToken',  
+        e
         },
-        withCredentials: true, // Include this to enable cookie handling
+        withCredentials: true, 
       });
   
-      console.log(response.data); // Assuming the response contains data
+      console.log(response.data); 
     } catch (err) {
       console.error(`Error at login POST request: ${err}`);
     }

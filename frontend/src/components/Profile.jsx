@@ -23,6 +23,7 @@ const getData = async () => {
     });
     
     const data = response.data;
+    setUserData(data)
     console.log(data);
   } catch (error) {
     console.error("An error occurred:", error);
@@ -62,16 +63,16 @@ useEffect(()=>{
              flexDirection:"column",
              alignItems:"center"
             }} >
-              <img src={"https://scontent.fktm3-1.fna.fbcdn.net/v/t39.30808-6/271910032_1944517802386013_4212220958611674125_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=xFrsIGgFKZ4AX_pZNa5&_nc_ht=scontent.fktm3-1.fna&oh=00_AfAZTGeAh9N0s4DXH4Uz2AswHBDHqkhi7jVahrsgObQy3w&oe=65391392"} className='profile-pic-blog edit-blog ' alt="" />
+              <img src={userData.profilePic} className='profile-pic-blog edit-blog ' alt="" />
               <div  >
                 <Typography sx={{
                   display: "block",
                   fontWeight:700,
                   fontSize:"2rem"
-                }} variant="h4" color="initial">Prashant Acharya</Typography>
+                }} variant="h4" color="initial">{userData.name}</Typography>
                 <Typography variant="h6" p={1} sx={{
                     fontSize:"1.5rem"
-                }} color="initial">CEO and Developer</Typography>
+                }} color="initial">{userData.description}</Typography>
                 <Link
                 to={"/editor"}
                 sx={{

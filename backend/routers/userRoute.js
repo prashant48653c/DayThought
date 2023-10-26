@@ -121,7 +121,38 @@ console.log(err)
 
 
 
+router.post("/postBlog",Authenticate, async (req, res) => {
 
+    try {
+        const { heading,blog } =await req.body;
+        
+        if (!heading || !blog) {
+            res.status(400).json({ messege: "Missing heading or blog" });
+        }
+        const userId= await req.userID
+        
+        const oldUser = await User.findOne({ _id: userId })
+         
+        if (!oldUser) {
+            res.status(404).json({ messege: "User not found" })
+        }else{
+            const blogs=await oldUser.takeBlog(heading,blog)
+            await oldUser.save()
+            res.status(200).json({ messege: "Succesfully posted the blog" })
+        }
+      
+    } catch (err) {
+        console.log(err)
+        res.status(404).json({ messege: "Cannot post the blog" })
+    }
+
+
+
+
+
+
+
+})
 
 
 

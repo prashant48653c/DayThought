@@ -23,6 +23,16 @@ const userSchema = new mongoose.Schema({
         default:"New User at The Day Thought"
 
     },
+    blogs:[{
+        heading:{
+            type:String,
+            required:true,
+        },
+        blog:{
+            type:String,
+            required:true
+        }
+    }],
     tokens:[{
         token:{
             type:String,
@@ -48,6 +58,21 @@ userSchema.methods.generateAuthToken = async function (){
         console.log(`Unable to generate token ${err}`)
     }
 }
+
+
+
+userSchema.methods.takeBlog = async function (heading,blog){
+    try{
+            this.blogs=this.blogs.concat({heading,blog})
+            await this.save()
+            console.log("Blog was added")
+            return this.blogs
+       
+    }catch(err){
+        console.log(`Unable to generate token ${err}`)
+    }
+}
+
 
 userSchema.pre('save', async function(next){
     console.log("Hashing the password");
