@@ -23,6 +23,25 @@ router.use(cors({
 
 
 
+
+
+router.get('/alldata', async (req, res) => {
+    try {
+      const data = await User.find({});
+  
+      if (!data) {
+        return res.status(404).json({ message: 'No data found' });
+      }
+  
+      res.status(200).json({ data });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
+
+
 // /userdata is the route where the information about user and the blog will be sent. this endpoint is responsible when user view other user's profile and when view it's own profile and tries to login 
 
 router.get("/getdata", Authenticate , async (req, res) => {

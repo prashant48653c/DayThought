@@ -1,14 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
-  value: 0,
-}
+ 
 
 export const homeSlicer = createSlice({
   name: 'userData',
   initialState:{
     userData:[],
-    blog:[]
+    blog:[],
+    allUser:[]
   },
   reducers: {
   
@@ -17,11 +16,15 @@ export const homeSlicer = createSlice({
     },
     setBlog:(state,action)=>{
         state.blog=action.payload
-    }
-  },
+    },
+   
+  setAllUser:(state,action)=>{
+    state.allUser=action.payload
+
+},}
 })
 
 // Action creators are generated for each case reducer function
-export const { setUserData,setBlog } = homeSlicer.actions
+export const { setUserData,setBlog,setAllUser } = homeSlicer.actions
 
 export default homeSlicer.reducer

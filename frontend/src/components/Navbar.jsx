@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { AppBar, Toolbar, Typography, Button, IconButton, TextField, ButtonGroup } from '@mui/material';
  import { useNavigate } from 'react-router-dom';
  import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
+//  import SearchIcon from '@mui/icons-material/SearchIcon';
+
 import Option from './Option';
 const Navbar = () => {
 
@@ -34,6 +36,14 @@ const Navbar = () => {
       
         </IconButton>
      <Person2OutlinedIcon onClick={()=>setOption(option=== true ? false : true)} />
+
+     <TextField
+      placeholder="Search..."
+      variant="outlined"
+      size="small"
+      fullWidth 
+      // onChange={handleSearchChange}
+    />
       </Toolbar>
 
       

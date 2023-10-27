@@ -7,19 +7,19 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-import { setUserData,setBlog } from '../Slices/homeSlicer'
+import { setUserData, setBlog } from '../Slices/homeSlicer'
 
 
 const Profile = () => {
-  const { userData,blog } = useSelector((state) => state.home)
+  const { userData, blog } = useSelector((state) => state.home)
   const dispatch = useDispatch()
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
-  const goToBlog=(e,elem)=>{
-    dispatch(setBlog(elem))  
+  const goToBlog = (e, elem) => {
+    dispatch(setBlog(elem))
     navigate("/blog")
-}
+  }
 
   const URL = "http://localhost:4000/getdata";
 
@@ -35,7 +35,7 @@ const Profile = () => {
 
       const data = response.data;
       dispatch(setUserData(data))
-      
+
     } catch (error) {
       console.error("An error occurred:", error);
     }
@@ -44,122 +44,122 @@ const Profile = () => {
   useEffect(() => {
     getData();
     console.log(userData)
-   
+
   }, [dispatch])
 
 
 
 
-if(userData.blogs){
-  return (
-    <>
+  if (userData.blogs) {
+    return (
+      <>
 
 
 
 
 
-      <Container sx={{
-        margin: "0rem 2rem"
-      }} maxWidth="xl">
+        <Container sx={{
+          margin: "0rem 2rem"
+        }} maxWidth="xl">
 
-        <Box py={4} pb={3} sx={{
-          display: "flex",
-          gap: "2rem",
-          textAlign: "center",
-          flexDirection: "column",
-          alignItems: "center"
-        }} >
-          <img src={userData.profilePicture} className='profile-pic-blog edit-blog ' alt="" />
-          <div  >
-            <Typography sx={{
-              display: "block",
-              fontWeight: 700,
-              fontSize: "2rem"
-            }} variant="h4" color="initial">{userData.name}</Typography>
-            <Typography variant="h6" p={1} sx={{
-              fontSize: "1.5rem"
-            }} color="initial">{userData.description}</Typography>
-            <Link
-              to={"/editor"}
-              sx={{
-                color: "green",
-
-              }} >Edit Profile</Link>
-          </div>
-
-
-
-        </Box>
-
-        <Grid my={4}  sx={{
-       maxWidth: "100%",
-        display:"flex",
-        justifyContent:"flex-start",
-        gap:"6rem",
-        alignItems:"center",
-        
-      }} height={"auto"} py={5} container rowSpacing={4} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-{
-  userData.blogs.map((elem,i)=>{
-    
-    
-  return  (
-
-
-    
-<Grid  key={i} ml={3} p={2} sm={3}>
-
-          <Paper onClick={(e) => goToBlog(e, elem)}   sx={{
-            padding:"1rem",
-            height: "auto",
-            width:"30rem",
+          <Box py={4} pb={3} sx={{
             display: "flex",
-            justifyContent:"center",
+            gap: "2rem",
+            textAlign: "center",
             flexDirection: "column",
-            cursor:"pointer"
+            alignItems: "center"
           }} >
-            <img className='post-box-img' src={f} alt="" />
-            <Typography variant="p" py={1} color="initial">Business, Travel — July 2, 2020</Typography>
-            <Typography variant="h3" sx={{
-              fontWeight: "700",
-              fontSize: "1.8rem",
-              lineHeight: "2.1rem"
-            }} color="initial">{elem.heading}</Typography>
+            <img src={userData.profilePicture} className='profile-pic-blog edit-blog ' alt="" />
+            <div  >
+              <Typography sx={{
+                display: "block",
+                fontWeight: 700,
+                fontSize: "2rem"
+              }} variant="h4" color="initial">{userData.name}</Typography>
+              <Typography variant="h6" p={1} sx={{
+                fontSize: "1.5rem"
+              }} color="initial">{userData.description}</Typography>
+              <Link
+                to={"/editor"}
+                sx={{
+                  color: "green",
 
-            <Typography py={1} variant="p" sx={{
-              fontSize: "1.4rem",
-              fontWeight: 400,
-              color: "rgb(136, 136, 136)"
-            }} color="initial">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</Typography>
-
-            <Box py={1} pb={3} sx={{
-              display: "flex",
-              gap: "1rem",
-              alignItems: "center"
-            }} >
-              <img src={profilePic} className='profile-pic' alt="" />
-              <div>
-                <Typography sx={{
-                  display: "block"
-                }} variant="p" color="initial">Prashant Acharya</Typography>
-                <Typography variant="p" color="initial">CEO and Developer</Typography>
-              </div>
-            </Box>
-
-          </Paper>
-        </Grid>
-  )
-
-  })
-}
-     </Grid>  
-
-      </Container>
+                }} >Edit Profile</Link>
+            </div>
 
 
-    </>
-  )
-}
+
+          </Box>
+
+          <Grid my={4} sx={{
+            maxWidth: "100%",
+            display: "flex",
+            justifyContent: "flex-start",
+            gap: "6rem",
+            alignItems: "center",
+
+          }} height={"auto"} py={5} container rowSpacing={4} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            {
+              userData.blogs.map((elem, i) => {
+
+
+                return (
+
+
+
+                  <Grid key={i} ml={3} p={2} sm={3}>
+
+                    <Paper onClick={(e) => goToBlog(e, elem)} sx={{
+                      padding: "1rem",
+                      height: "auto",
+                      width: "30rem",
+                      display: "flex",
+                      justifyContent: "center",
+                      flexDirection: "column",
+                      cursor: "pointer"
+                    }} >
+                      <img className='post-box-img' src={f} alt="" />
+                      <Typography variant="p" py={1} color="initial">Business, Travel — July 2, 2020</Typography>
+                      <Typography variant="h3" sx={{
+                        fontWeight: "700",
+                        fontSize: "1.8rem",
+                        lineHeight: "2.1rem"
+                      }} color="initial">{elem.heading}</Typography>
+
+                      <Typography py={1} variant="p" sx={{
+                        fontSize: "1.4rem",
+                        fontWeight: 400,
+                        color: "rgb(136, 136, 136)"
+                      }} color="initial">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</Typography>
+
+                      <Box py={1} pb={3} sx={{
+                        display: "flex",
+                        gap: "1rem",
+                        alignItems: "center"
+                      }} >
+                        <img src={profilePic} className='profile-pic' alt="" />
+                        <div>
+                          <Typography sx={{
+                            display: "block"
+                          }} variant="p" color="initial">Prashant Acharya</Typography>
+                          <Typography variant="p" color="initial">CEO and Developer</Typography>
+                        </div>
+                      </Box>
+
+                    </Paper>
+                  </Grid>
+                )
+
+              })
+            }
+          </Grid>
+
+        </Container>
+
+
+      </>
+    )
+  }
 
 }
 

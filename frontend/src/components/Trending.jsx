@@ -8,39 +8,53 @@ import { Box, Typography, Container, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios';
+import { setAllUser,setBlog } from '../Slices/homeSlicer';
 
 
 const Trending = () => {
+  const { allUser,blog } = useSelector((state) => state.home)
   const dispatch = useDispatch()
+  const navigate=useNavigate();
+
+
+  const goToBlog = (e, elem) => {
+    dispatch(setBlog(elem))
+    navigate("/blog")
+  }
   const URL="http://localhost:4000/alldata";
   
-  // const getData = async () => {
-  //   try {
-  //     const response = await axios.get(URL, {
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //       },
-  //       withCredentials: true
-  //     });
+  const getData = async () => {
+    try {
+      const response = await axios.get(URL, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        withCredentials: true
+      });
       
-  //     const data = response.data;
-  //     setUserData(data)
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.error("An error occurred:", error);
-  //   }
-  // };
+      const data =await response.data;
+      dispatch(setAllUser(data))
+     
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
   
-  // useEffect(()=>{
-  //   getData()
-  // },[])
-const navigate=useNavigate();
+  useEffect(()=>{
 
-  const goToBlog=()=>[
-    navigate("/blog")
-  ]
+    getData()
+    console.log(allUser);
+  },[])
 
+
+
+
+
+
+
+ 
+if(allUser.data){
   return (
     <Box sx={{
       margin:0,
@@ -62,6 +76,8 @@ const navigate=useNavigate();
 
         }} color="initial">Trending</Typography>
       </Box>
+
+
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
@@ -76,142 +92,83 @@ const navigate=useNavigate();
        
       >
 
+ {
+  allUser.data.map((elem,i)=>{
+ return(
+    <SwiperSlide key={i} style={{
+      width: "100%",
+      height:"35rem",
+      
+    }}>
+      {console.log(elem)}
+      
+      <Grid container style={{
+      width: "100%",
+      height:"35rem",
+      cursor:"pointer"
+    }}  rowSpacing={1}  columnSpacing={{ xs: 1, sm: 2, md: 1 }} onClick={(e) => goToBlog(e, elem)}   >
+
+        <Grid item xs={6}>
+
+          <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" className='swiper-img' alt="" />
+
+        </Grid>
+        <Grid item py={9} mt={3} xs={6}>
+
+          <Typography variant="p" sx={{
+            fontSize: "1.7rem"
+          }} color="initial">
+            <b>Business-Travel</b>  <em>July 05</em>
+          </Typography>
 
 
-        <SwiperSlide style={{
-          width: "100%",
-          height:"35rem",
+          <Typography variant="h3" sx={{
+           fontWeight: "700",
           
-        }}>
-          
-          <Grid container style={{
-          width: "100%",
-          height:"35rem",
-          cursor:"pointer"
-        }}  rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 1 }}  onClick={goToBlog}  >
+           fontSize:"4rem",
+           lineHeight:"4.8rem",
+            maxWidth: "100%"
+          }} color="initial">
+            How to make yourself happy without any tension and anxiety
+          </Typography>
 
-            <Grid item xs={6}>
-
-              <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" className='swiper-img' alt="" />
-
-            </Grid>
-            <Grid item py={9} mt={3} xs={6}>
-
-              <Typography variant="p" sx={{
-                fontSize: "1.7rem"
-              }} color="initial">
-                <b>Business-Travel</b>  <em>July 05</em>
-              </Typography>
+          <Typography variant="p" sx={{
+            fontSize:"1.4rem",
+            fontWeight:400,
+            color:"rgb(136, 136, 136)"
+          }} color="initial">
+            Horses typically have a strong and muscular body with four long legs, a flowing mane, and a tail. Their coat can come in various colors and patterns, including bay, chestnut, black, white, and gray. Some horses have distinct markings on their faces or legs.
+          </Typography>
 
 
-              <Typography variant="h3" sx={{
-               fontWeight: "700",
-              
-               fontSize:"4rem",
-               lineHeight:"4.8rem",
-                maxWidth: "100%"
-              }} color="initial">
-                How to make yourself happy without any tension and anxiety
-              </Typography>
+          <Box py={2}   sx={{
+          display: "flex",
+          gap: "1rem",
+          alignItems: "center"
+        }} >
+          <img src={profilePic} className='profile-pic' alt="" />
+          <div>
+            <Typography sx={{
+              display: "block"
+            }} variant="p" color="initial">Prashant Acharya</Typography>
+            <Typography variant="p" color="initial">CEO and Developer</Typography>
+          </div>
+        </Box>
 
-              <Typography variant="p" sx={{
-                fontSize:"1.4rem",
-                fontWeight:400,
-                color:"rgb(136, 136, 136)"
-              }} color="initial">
-                Horses typically have a strong and muscular body with four long legs, a flowing mane, and a tail. Their coat can come in various colors and patterns, including bay, chestnut, black, white, and gray. Some horses have distinct markings on their faces or legs.
-              </Typography>
+        </Grid>
 
-
-              <Box py={2}   sx={{
-              display: "flex",
-              gap: "1rem",
-              alignItems: "center"
-            }} >
-              <img src={profilePic} className='profile-pic' alt="" />
-              <div>
-                <Typography sx={{
-                  display: "block"
-                }} variant="p" color="initial">Prashant Acharya</Typography>
-                <Typography variant="p" color="initial">CEO and Developer</Typography>
-              </div>
-            </Box>
-
-            </Grid>
-
-          </Grid>
+      </Grid>
 
 
-        </SwiperSlide>
+    </SwiperSlide>
+ )
+  })
+} 
+
+      
  
 
        
-        <SwiperSlide style={{
-          width: "100%",
-          height:"35rem",
-          
-        }}>
-          
-          <Grid container style={{
-          width: "100%",
-          height:"35rem",
-          cursor:"pointer"
-        }}  rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 1 }}  onClick={goToBlog}  >
-
-            <Grid item xs={6}>
-
-              <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" className='swiper-img' alt="" />
-
-            </Grid>
-            <Grid item py={9} mt={3} xs={6}>
-
-              <Typography variant="p" sx={{
-                fontSize: "1.7rem"
-              }} color="initial">
-                <b>Business-Travel</b>  <em>July 05</em>
-              </Typography>
-
-
-              <Typography variant="h3" sx={{
-               fontWeight: "700",
-              
-               fontSize:"4rem",
-               lineHeight:"4.8rem",
-                maxWidth: "100%"
-              }} color="initial">
-                How to make yourself happy without any tension and anxiety
-              </Typography>
-
-              <Typography variant="p" sx={{
-                fontSize:"1.4rem",
-                fontWeight:400,
-                color:"rgb(136, 136, 136)"
-              }} color="initial">
-                Horses typically have a strong and muscular body with four long legs, a flowing mane, and a tail. Their coat can come in various colors and patterns, including bay, chestnut, black, white, and gray. Some horses have distinct markings on their faces or legs.
-              </Typography>
-
-
-              <Box py={2}   sx={{
-              display: "flex",
-              gap: "1rem",
-              alignItems: "center"
-            }} >
-              <img src={profilePic} className='profile-pic' alt="" />
-              <div>
-                <Typography sx={{
-                  display: "block"
-                }} variant="p" color="initial">Prashant Acharya</Typography>
-                <Typography variant="p" color="initial">CEO and Developer</Typography>
-              </div>
-            </Box>
-
-            </Grid>
-
-          </Grid>
-
-
-        </SwiperSlide>
- 
 
        
        
@@ -223,6 +180,8 @@ const navigate=useNavigate();
 
     </Box>
   );
+}
+ 
 }
 
 export default Trending
