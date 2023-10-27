@@ -5,9 +5,15 @@ import 'swiper/css';
 import 'swiper/css/bundle'; 
  
 import { Box, Typography, Container, Grid } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
  
  
 const Popular = () => {
+  const navigate=useNavigate();
+
+  const goToBlog=()=>[
+    navigate("/blog")
+  ]
     return (
       <Box sx={{
         margin:0,
@@ -50,7 +56,7 @@ const Popular = () => {
             height:"35rem",
             
           }}>
-            <Grid container  style={{
+            <Grid container onClick={goToBlog}  style={{
             width: "100%",
             height:"35rem",
           }}  rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 1 }}>

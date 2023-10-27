@@ -58,7 +58,7 @@ router.post("/login", async (req, res) => {
         }
         if (matched) {
             const token = await oldUser.generateAuthToken()
-            console.log(token)
+            // console.log(token)
             res.cookie("jwtoken", token, {
                 expires: new Date(Date.now() + 25892000000),
                 httpOnly: true,
