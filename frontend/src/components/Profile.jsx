@@ -76,8 +76,8 @@ const Profile = () => {
                 display: "block",
                 fontWeight: 700,
                 fontSize: "2rem"
-              }} variant="h4" color="initial">{userData.name}</Typography>
-              <Typography variant="h6" p={1} sx={{
+              }} variant="p" color="initial">{userData.name}</Typography>
+              <Typography variant="p" p={1} sx={{
                 fontSize: "1.5rem"
               }} color="initial">{userData.description}</Typography>
               <Link
@@ -121,7 +121,7 @@ const Profile = () => {
                     }} >
                       <img className='post-box-img' src={f} alt="" />
                       <Typography variant="p" py={1} color="initial">Business, Travel — July 2, 2020</Typography>
-                      <Typography variant="h3" sx={{
+                      <Typography variant="p" sx={{
                         fontWeight: "700",
                         fontSize: "1.8rem",
                         lineHeight: "2.1rem"

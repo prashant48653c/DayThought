@@ -78,7 +78,7 @@ const Trending = () => {
 
           width: "100%"
         }} >
-          <Typography variant="h3" sx={{
+          <Typography variant="p" sx={{
             fontWeight: "700",
 
             fontSize: "4rem",
@@ -142,7 +142,7 @@ const Trending = () => {
                           </Typography>
 
 
-                          <Typography variant="h3" sx={{
+                          <Typography variant="p" sx={{
                             fontWeight: "700",
                             margin: " 1rem 0",
                             fontSize: "4rem",

@@ -53,7 +53,7 @@ const PostBox = () => {
           }} >
             <img className='post-box-img' src={f} alt="" />
             <Typography variant="p" py={1} color="initial">Business, Travel — July 2, 2020</Typography>
-            <Typography variant="h3" sx={{
+            <Typography variant="p" sx={{
               fontWeight: "700",
               fontSize: "1.8rem",
               lineHeight: "2.1rem"

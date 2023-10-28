@@ -23,7 +23,7 @@ function Login() {
         headers: {
           'Content-Type': 'application/json', 
           Authorization: 'Bearer YourAccessToken',  
-        e
+        
         },
         withCredentials: true, 
       });
@@ -41,7 +41,7 @@ function Login() {
         marginTop:"4rem"
       }} maxWidth="xs">
       <Paper elevation={3} style={{ padding: '20px' }}>
-        <Typography variant="h5">Login</Typography>
+        <Typography variant="p">Login</Typography>
         <form onSubmit={sendCredential} method='POST' >
         <TextField label="Email" name='email' value={userData.email} onChange={handleInputChange} fullWidth margin="normal" variant="outlined" />
 
