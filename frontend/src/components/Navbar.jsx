@@ -13,7 +13,9 @@ const Navbar = () => {
   return (
     <>
     <AppBar color='default' sx={{
-      maxWidth:"100%"
+      maxWidth:"100%",
+      background:"#A6B1E1",
+     
     }}  position="sticky">
       <Toolbar>
      

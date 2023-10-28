@@ -6,6 +6,7 @@
   padding: 0%;
   margin: 0;
   box-sizing: border-box;
+  color: #424874;
   font-family: 'Poppins', sans-serif;
 }
 html{
@@ -41,7 +42,7 @@ img{
  border-radius: .5rem;
 }
 .btn-sub{
-  background-color: #F99417;
+  background-color: #424874;
   color: white;
   height: 5rem;
   outline: none;
@@ -53,8 +54,8 @@ img{
 }
 .btn-sub:hover{
   cursor: pointer;
-  background-color:white ;
-  color:#F99417 ;
+  background-color:#A6B1E1 ;
+  color:#F7F7F7 ;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .profile-pic-blog{
@@ -97,4 +98,6 @@ width: 95%;
  #root{
   width: 100%;
   max-width: 100%;
+  background-color: #DCD6F7;
  }
+ 

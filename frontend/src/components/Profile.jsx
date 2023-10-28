@@ -17,6 +17,7 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const goToBlog = (e, elem) => {
+    e.preventDefault()
     dispatch(setBlog(elem))
     navigate("/blog")
   }

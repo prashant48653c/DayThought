@@ -17,7 +17,7 @@ const PostBox = () => {
     <Container sx={{
       margin:0,
       padding:0,
-      border:"1px solid black",
+    
        maxWidth:"100%"
     }} >
 
@@ -48,7 +48,8 @@ const PostBox = () => {
             display: "flex",
             justifyContent:"center",
             flexDirection: "column",
-            cursor:"pointer"
+            cursor:"pointer",
+            background:"#F4EEFF"
           }} >
             <img className='post-box-img' src={f} alt="" />
             <Typography variant="p" py={1} color="initial">Business, Travel — July 2, 2020</Typography>
