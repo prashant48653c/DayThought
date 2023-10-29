@@ -20,6 +20,7 @@ const Trending = () => {
   const goToBlog = (e, elem, user) => {
     e.preventDefault()
     dispatch(setBlog(user))
+    dispatch(setUserData(elem))
     navigate("/blog")
   }
 
@@ -116,10 +117,7 @@ const Trending = () => {
                       height: "35rem",
 
                     }}>
-                      {
-                        console.log(user)
-                      }
-
+                      
 
                       <Grid container style={{
                         width: "100%",
@@ -149,7 +147,7 @@ const Trending = () => {
                             lineHeight: "4.8rem",
                             maxWidth: "95%"
                           }} color="initial">
-                            <code dangerouslySetInnerHTML={{ __html: user.heading }} />
+          <code dangerouslySetInnerHTML={{ __html: user.heading }} />
 
                           </Typography>
 
@@ -162,7 +160,7 @@ const Trending = () => {
 
                             margin: "1rem 0"
                           }} color="initial">
-                            <code dangerouslySetInnerHTML={{ __html: (user.blog).slice(0, 300) + " . . . ." }} />
+             <code dangerouslySetInnerHTML={{ __html: (user.blog).slice(0, 300) + " . . . ." }} />
 
                           </Typography>
 

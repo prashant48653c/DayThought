@@ -1,48 +1,52 @@
-import { TextField } from '@mui/material'
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { TextField } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setResult } from '../Slices/resultSlicer';
+import { useNavigate } from 'react-router-dom';
 
 const Search = () => {
+const navigate=useNavigate()
+const { result } = useSelector((state) => state.result);
 
-    const dispatch=useDispatch()
-  const { allUser, blog } = useSelector((state) => state.home)
-  
-  const [searchQuery, setSearchQuery] = useState(''); // Store the search query
-  const [searchResults, setSearchResults] = useState([]); // Store the search results
+  const dispatch = useDispatch();
+  const { allUser } = useSelector((state) => state.home);
+
+  const [searchQuery, setSearchQuery] = useState('');  
+  const [searchResults, setSearchResults] = useState([]); 
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
-  }
-
-  const handleSearchEnter = (e) => {
     if (e.key === 'Enter') {
+        console.log("ENter")
       searchBlogs();
     }
   }
-
-  const searchBlogs = () => {
-    const results = allUser.filter(user =>
-      user.blogs.some(blog => blog.heading.includes(searchQuery))
+ 
+const searchBlogs =async () => {
+    const results =await allUser.data.filter(user =>
+      user.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    setSearchResults(results);
-    console.log(results)
-  }
-  
-
+    
+    dispatch(setResult(results))
+    if (result.length > 0) {
+        navigate('/search');
+      }
+    
+    }
+   
   return (
     <>
-   <TextField
-      placeholder="Search..."
-      variant="outlined"
-      size="small"
-      value={searchQuery}
-    onChange={handleSearch}
-      onclick={handleSearchEnter}
-    />
+      <TextField
+        placeholder="Search for user"
+        variant="outlined"
+        size="small"
+        onChange={handleSearch}
+        onKeyDown={handleSearch} // This will trigger the search when the Enter key is pressed
+      />
 
-
+      
     </>
-  )
+  );
 }
 
-export default Search
+export default Search;

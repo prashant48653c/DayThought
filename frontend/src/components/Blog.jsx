@@ -14,14 +14,14 @@ const Blog = () => {
   useEffect(() => {
     
  console.log(blog)
-  if (blog) {
+  if (blog && userData) {
  console.log(blog)
-
+console.log(userData)
       
     }
   }, []);
 
-  if(!blog){
+  if(!blog && !userData){
 return <h1>LOading</h1>
   }
 
@@ -40,8 +40,8 @@ return <h1>LOading</h1>
             <Typography sx={{
               display: "block",
               fontWeight: 600
-            }} variant="h4" color="initial">Prashant Acharya</Typography>
-            <Typography variant="h6" color="initial">CEO and Developer</Typography>
+            }} variant="h4" color="initial">{userData.name}</Typography>
+            <Typography variant="h6" color="initial">{userData.description}</Typography>
           </div>
         </Box>
 
