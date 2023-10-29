@@ -5,17 +5,36 @@ import { AppBar, Toolbar, Typography, Button, IconButton, TextField, ButtonGroup
 //  import SearchIcon from '@mui/icons-material/SearchIcon';
 
 import Option from './Option';
+import Search from './Search';
+
 const Navbar = () => {
 
   const navigate=useNavigate();
   const [option,setOption]=useState(false)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <>
     <AppBar color='default' sx={{
       maxWidth:"100%",
-      
-     
     }}  position="sticky">
       <Toolbar>
      
@@ -39,13 +58,7 @@ const Navbar = () => {
         </IconButton>
      <Person2OutlinedIcon onClick={()=>setOption(option=== true ? false : true)} />
 
-     <TextField
-      placeholder="Search..."
-      variant="outlined"
-      size="small"
-      fullWidth 
-      // onChange={handleSearchChange}
-    />
+  <Search/>
       </Toolbar>
 
       
