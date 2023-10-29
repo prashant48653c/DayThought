@@ -17,6 +17,8 @@ import Signup from './components/Signup'
 import Join from './components/Join'
 import Option from './components/Option'
 import Editor from './components/Editor'
+import Popup from './components/Popup'
+import Result from './components/Result'
 
 
 function App() {
@@ -27,6 +29,7 @@ function App() {
 
 
       <BrowserRouter>
+      <Popup/>
         <Navbar />
         <Routes>
 
@@ -37,6 +40,7 @@ function App() {
           <Route path='/join' element={<Join />} />
           <Route path='/option' element={<Option />} />
           <Route path='/editor' element={<Editor />} />
+          <Route path='/search' element={<Result />} />
 
 
 

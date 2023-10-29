@@ -3,8 +3,15 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { setToggle, setpopMessege } from '../Slices/popSlicer';
+import { useDispatch } from 'react-redux';
 
 const Write = () => {
+  const dispatch=useDispatch()
+
+   
+
+
   const URL="http://localhost:4000/postblog";
 
   const [blogdata, setBlogData] = useState({
@@ -25,8 +32,10 @@ const Write = () => {
         },
         withCredentials: true, 
       });
-  
+      const pop=await response.data.messege
       console.log(response.data); 
+      dispatch(setToggle(true))
+      dispatch(setpopMessege(pop))
     } catch (err) {
       console.error(`Error at login POST request: ${err}`);
     }

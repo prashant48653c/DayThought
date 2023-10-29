@@ -11,8 +11,9 @@ import { setUserData, setBlog } from '../Slices/homeSlicer'
 
 
 const Profile = () => {
+
   const { userData, blog } = useSelector((state) => state.home)
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -21,10 +22,11 @@ const Profile = () => {
     dispatch(setBlog(elem))
     navigate("/blog")
   }
+  const [fetchToggle,setFetchToggle]=useState(true)
 
   const URL = "http://localhost:4000/getdata";
 
-  const getData = useMemo(()=> async () => {
+  const getData = async () => {
     try {
        console.log("first")
       const response = await axios.get(URL, {
@@ -37,15 +39,19 @@ const Profile = () => {
 
       const data = response.data;
       dispatch(setUserData(data))
-
+      setFetchToggle(false)
     } catch (error) {
       console.error("An error occurred:", error);
     }
-  },[]  )
+  }  
 
   useEffect(() => {
-    getData();
-    // console.log(userData)
+    if(fetchToggle){
+      getData();
+     
+    }
+  
+   
 
   }, [getData])
 
@@ -148,8 +154,8 @@ const Profile = () => {
                         <div>
                           <Typography sx={{
                             display: "block"
-                          }} variant="p" color="initial">Prashant Acharya</Typography>
-                          <Typography variant="p" color="initial">CEO and Developer</Typography>
+                          }} variant="p" color="initial">{userData.name}</Typography>
+                          <Typography variant="p" color="initial">{userData.description}</Typography>
                         </div>
                       </Box>
 

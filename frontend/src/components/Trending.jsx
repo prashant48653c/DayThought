@@ -181,7 +181,7 @@ const Trending = () => {
                               <Typography sx={{
                                 display: "block"
                               }} variant="p" color="initial">{elem.name}</Typography>
-                              <Typography variant="p" color="initial">CEO and Developer</Typography>
+                              <Typography variant="p" color="initial">{elem.description}</Typography>
                             </div>
                           </Box>
 

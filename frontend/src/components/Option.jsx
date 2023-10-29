@@ -9,9 +9,12 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import { Paper } from '@mui/material';
 import axios from 'axios';
+import {setToggle,setpopMessege} from '../Slices/popSlicer'
+import { useDispatch } from 'react-redux';
 
 export default function Option() {
   const URL="http://localhost:4000/logout";
+  const dispatch=useDispatch()
 
   const logout=async(e)=>{
     e.preventDefault()
@@ -23,6 +26,10 @@ export default function Option() {
           "Content-Type": "application/json",
         },
       });
+      const pop=await response.data.messege
+      console.log(response.data); 
+      dispatch(setpopMessege(pop))
+      dispatch(setToggle(true))
       console.log("Successfully logged out", response);
     } catch (error) {
       console.log(error)

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { TextField, Button, Container, Typography, Paper } from '@mui/material';
 import axios from 'axios'
-
-
+import {useDispatch} from 'react-redux'
+ import {setToggle,setpopMessege} from '../Slices/popSlicer'
 function Signup() {
-
+  const dispatch=useDispatch()
+ 
   const URL="http://localhost:4000/signup";
   const [userData, setUserData]=useState({
     name:'',
@@ -25,7 +26,9 @@ function Signup() {
         withCredentials: true,  
       });
   
-      console.log(response.data);
+      const pop=await response.data.messege
+      dispatch(setToggle(true))
+      dispatch(setpopMessege(pop))
     } catch (err) {
       console.log(`Error at post in login ${err}`);
     }
@@ -51,7 +54,7 @@ function Signup() {
 
           <TextField label="Password" value={userData.password} onChange={handleInputChange} fullWidth name='password' margin="normal" variant="outlined" type="password" />
 
-          <Button type="submit" variant="contained" color="primary">
+          <Button type="submit"   variant="contained" color="primary">
             Sign up
           </Button>
 

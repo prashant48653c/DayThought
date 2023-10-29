@@ -23,7 +23,7 @@ router.use(cors({
 
 
 
-
+//provide all the data of the database
 
 router.get('/alldata', async (req, res) => {
     try {

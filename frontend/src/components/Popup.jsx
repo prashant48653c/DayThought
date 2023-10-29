@@ -23,14 +23,15 @@ dispatch(setToggle(false))
                 display:"flex",
                 flexDirection:"column",
                 alignItems:"flex-start",
-                position: 'absolute',
+                position: 'fixed',
                 top: "11%",
                 left: "40%",
                 transform: "translate(-50%, -50%)",
                 width:"auto",
                 maxWidth:"23%",
                 height:"auto",
-                padding:"2rem "
+                padding:"2rem ",
+                zIndex:"1111"
         
             }} >
         
