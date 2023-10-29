@@ -11,15 +11,7 @@ const Blog = () => {
   const dispatch=useDispatch()
   const {userData,blog} = useSelector((state) => state.home);
 
-  useEffect(() => {
-    
- console.log(blog)
-  if (blog && userData) {
- console.log(blog)
-console.log(userData)
-      
-    }
-  }, []);
+   
 
   if(!blog && !userData){
 return <h1>LOading</h1>

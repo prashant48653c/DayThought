@@ -28,7 +28,7 @@ const Profile = () => {
 
   const getData = async () => {
     try {
-       console.log("first")
+    
       const response = await axios.get(URL, {
         headers: {
           Accept: "application/json",

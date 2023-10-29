@@ -35,7 +35,7 @@ export default function Profile() {
         },
         withCredentials: true,
       });
-      console.log(response.data);
+   
     } catch (err) {
       console.error(`Error at update Patch request: ${err}`);
     }

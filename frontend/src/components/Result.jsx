@@ -12,7 +12,7 @@ function Result() {
 
   const goToBlog = (e, blog, user) => {
     e.preventDefault()
-    console.log(user,"userdata")
+    
     dispatch(setUserData(user))
     dispatch(setBlog(blog))
     navigate("/blog")
@@ -21,7 +21,7 @@ function Result() {
    
   const navigate = useNavigate()
   const { result } = useSelector((state) => state.result);
-  console.log(result)
+ 
 
   if (result) {
     return (

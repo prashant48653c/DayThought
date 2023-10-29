@@ -21,7 +21,7 @@ const Write = () => {
 
   const postBlog =async(e)=>{
     e.preventDefault()
-    console.log("Posting the blog")
+   
     try {
   
       const response = await axios.post(URL, blogdata, {
@@ -33,7 +33,7 @@ const Write = () => {
         withCredentials: true, 
       });
       const pop=await response.data.messege
-      console.log(response.data); 
+   
       dispatch(setToggle(true))
       dispatch(setpopMessege(pop))
     } catch (err) {

@@ -17,7 +17,7 @@ const { result } = useSelector((state) => state.result);
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
     if (e.key === 'Enter') {
-        console.log("ENter")
+       
       searchBlogs();
     }
   }

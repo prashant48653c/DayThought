@@ -27,7 +27,7 @@ const Trending = () => {
   const goToProfile = (e, elem, user) => {
 
     e.preventDefault()
-    console.log("going to profile")
+    
     dispatch(setUserData(elem))
     
 
@@ -56,7 +56,7 @@ const Trending = () => {
   useEffect(() => {
 
     getData()
-    console.log(allUser);
+   
   }, [])
 
 

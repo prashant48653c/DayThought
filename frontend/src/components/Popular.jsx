@@ -26,7 +26,7 @@ const Trending = () => {
   const goToProfile = (e, elem, user) => {
 
     e.preventDefault()
-    console.log("going to profile")
+ 
     dispatch(setUserData(elem))
     
 
@@ -55,7 +55,7 @@ const Trending = () => {
   useEffect(() => {
 
     getData()
-    console.log(allUser);
+   
   }, [])
 
 
@@ -116,9 +116,7 @@ const Trending = () => {
                       height: "35rem",
 
                     }}>
-                      {
-                        console.log(user)
-                      }
+                     
 
 
                       <Grid container style={{

@@ -27,10 +27,10 @@ export default function Option() {
         },
       });
       const pop=await response.data.messege
-      console.log(response.data); 
+     
       dispatch(setpopMessege(pop))
       dispatch(setToggle(true))
-      console.log("Successfully logged out", response);
+      
     } catch (error) {
       console.log(error)
     }
