@@ -26,18 +26,20 @@ const Footer = () => {
          display:"flex",
          gap:"2rem",
     }}>
+ <a href="https://www.instagram.com/prashant34223/" target="_blank" rel="noopener noreferrer">
+
  <AiOutlineInstagram size={35}/>
 
-
+</a>
     </IconButton>
 
     <IconButton sx={{
          display:"flex",
          gap:"2rem",
     }}>
- 
- <ImLinkedin2 size={35}/>
-
+ <a href="https://www.linkedin.com/in/prashant-acharya1/" target="_blank" rel="noopener noreferrer">
+  <ImLinkedin2 size={35} />
+</a>
 
     </IconButton>
 
@@ -46,8 +48,10 @@ const Footer = () => {
          display:"flex",
          gap:"2rem",
     }}>
+ <a href="https://www.facebook.com/prashant.acharya.28" target="_blank" rel="noopener noreferrer">
+
     <ImFacebook size={35}/>
-
+</a>
 
     </IconButton>
     </Box>
@@ -65,7 +69,7 @@ const Footer = () => {
 
   <Typography variant="p" color="initial"  align='center'>
 
- Template from Colorlib
+ Thank You
   </Typography>
 
  

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Login from './Login'
 import Signup from './Signup'
 import { Box, Button, ButtonGroup } from '@mui/material'
+import Popup from './Popup'
 
 const Join = () => {
     const [status,setStatus]=useState(false)
@@ -31,7 +32,7 @@ const Join = () => {
     </Box>
 
    
- 
+ <Popup/>
 
 
 

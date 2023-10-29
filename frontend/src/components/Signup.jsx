@@ -41,7 +41,7 @@ function Signup() {
         marginTop:"4rem"
       }} maxWidth="xs">
       <Paper  elevation={3} style={{ padding: '20px' }}>
-        <Typography variant="p">Sign Up</Typography>
+        <Typography variant="h4">Sign Up</Typography>
 
         <form onSubmit={sendCredential} method='POST' >
 

@@ -1,5 +1,5 @@
 import { Box, Container, Grid, Paper, Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import f from '../assets/f.jpeg'
 import profilePic from '../assets/ph.webp'
 import PostBox from './PostBox'
@@ -24,8 +24,9 @@ const Profile = () => {
 
   const URL = "http://localhost:4000/getdata";
 
-  const getData = async () => {
+  const getData = useMemo(()=> async () => {
     try {
+       console.log("first")
       const response = await axios.get(URL, {
         headers: {
           Accept: "application/json",
@@ -40,13 +41,13 @@ const Profile = () => {
     } catch (error) {
       console.error("An error occurred:", error);
     }
-  };
+  },[]  )
 
   useEffect(() => {
     getData();
-    console.log(userData)
+    // console.log(userData)
 
-  }, [dispatch])
+  }, [getData])
 
 
 
@@ -125,7 +126,12 @@ const Profile = () => {
                         fontWeight: "700",
                         fontSize: "1.8rem",
                         lineHeight: "2.1rem"
-                      }} color="initial">{elem.heading}</Typography>
+                      }} color="initial">
+                        
+                        <code dangerouslySetInnerHTML={{ __html: elem.heading }} />
+                        
+                        
+                        </Typography>
 
                       <Typography py={1} variant="p" sx={{
                         fontSize: "1.4rem",

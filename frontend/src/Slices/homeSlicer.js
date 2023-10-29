@@ -7,7 +7,8 @@ export const homeSlicer = createSlice({
   initialState:{
     userData:[],
     blog:[],
-    allUser:[]
+    allUser:[],
+    
   },
   reducers: {
   

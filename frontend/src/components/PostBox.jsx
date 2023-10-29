@@ -49,7 +49,7 @@ const PostBox = () => {
             justifyContent:"center",
             flexDirection: "column",
             cursor:"pointer",
-            background:"#F4EEFF"
+            background:"#f8f9fa"
           }} >
             <img className='post-box-img' src={f} alt="" />
             <Typography variant="p" py={1} color="initial">Business, Travel — July 2, 2020</Typography>

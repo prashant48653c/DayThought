@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import { TextField, Button, Container, Typography, Paper } from '@mui/material';
 import axios from 'axios'
+import { useDispatch,useSelector } from 'react-redux';
+import { setToggle } from '../Slices/popSlicer';
 function Login() {
+  const dispatch=useDispatch()
+
+  const handleLoginClick=(e)=>[
+    dispatch(setToggle(true))
+  ]
   const URL="http://localhost:4000/login";
   const [userData, setUserData]=useState({
     name:'',
@@ -41,14 +48,14 @@ function Login() {
         marginTop:"4rem"
       }} maxWidth="xs">
       <Paper elevation={3} style={{ padding: '20px' }}>
-        <Typography variant="p">Login</Typography>
+        <Typography variant="h4">Login</Typography>
         <form onSubmit={sendCredential} method='POST' >
-        <TextField label="Email" name='email' value={userData.email} onChange={handleInputChange} fullWidth margin="normal" variant="outlined" />
+        <TextField required label="Email" name='email' value={userData.email} onChange={handleInputChange} fullWidth margin="normal" variant="outlined" />
 
-<TextField label="Password" value={userData.password} onChange={handleInputChange} fullWidth name='password' margin="normal" variant="outlined" type="password" />
+<TextField required label="Password" value={userData.password} onChange={handleInputChange} fullWidth name='password' margin="normal" variant="outlined" type="password" />
 
 
-          <Button type="submit" variant="contained" color="primary">
+          <Button onClick={handleLoginClick} type="submit" variant="contained" color="primary">
             Login
           </Button>
         </form>
