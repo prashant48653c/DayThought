@@ -15,16 +15,18 @@ const Home = () => {
 
       <Box sx={{
         width: "100%",
-
+        border:"11px solid green",
         padding: "0 2rem",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        justifyContent:"center",
+        position:"relative"
 
 
       }}    >
 
-        <Trending />
+        <Trending/>
         <PostBox />
         <Popular />
       </Box>

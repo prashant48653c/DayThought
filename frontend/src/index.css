@@ -96,9 +96,12 @@ width: 95%;
 
 
  #root{
-  width: 100%;
-  max-width: 100%;
+ 
   background-color: #eeeeee;
+ }
+ body{
+  background-color: #eeeeee;
+
  }
  
 
@@ -147,3 +150,4 @@ width: 95%;
 }
 
  
+

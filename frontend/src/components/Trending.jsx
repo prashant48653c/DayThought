@@ -71,13 +71,13 @@ const Trending = () => {
       <Box sx={{
         margin: 0,
         padding: 0,
-       
+        border:"1px solid black",
         width: "100%"
       }} >
         <Box py={8} sx={{
           textAlign: "center",
 
-          width: "100%"
+        
         }} >
           <Typography variant="p" sx={{
             fontWeight: "700",

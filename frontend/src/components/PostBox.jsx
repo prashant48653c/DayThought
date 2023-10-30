@@ -15,36 +15,48 @@ const PostBox = () => {
 
   return (
     <Container sx={{
-      margin:0,
+      margin:" 0",
       padding:0,
-    
+      border:"1px solid black",
        maxWidth:"100%"
     }} >
 
-      <Grid my={4}  sx={{
-       maxWidth: "100%",
-        display:"flex",
-        justifyContent:"flex-start",
-        gap:"6rem",
-        alignItems:"center",
+      <Grid my={2} sx={{
+        columnGap:{
+          xs: 1, sm: 2, md: 6,lg:6
+        },
         
-      }} height={"auto"} py={5} container rowSpacing={4} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        border:"1px solid pink",
+     
+        position:"relative",
+        display:"flex",
+        justifyContent:{
+          xs:"center",sm:"flex-start",md:"flex-start",lg:"flex-start"
+        }
+         
+      }}  height={"auto"} py={5} container columnSpacing={0}>
 
 
  {
   arr.map((elem,i)=>[
 
 
-<Grid  key={i} ml={3} p={2} sm={3} sx={{
-          
-
-
-        }}>
-
+<Grid  key={i}  p={2}   sx={{
+            padding:"1rem",
+            height: "auto",
+            maxWidth:"100%",
+            display: "flex",
+            justifyContent:"center",
+            flexDirection: "column",
+            cursor:"pointer",
+           
+          }}>
           <Paper onClick={goToBlog}   sx={{
             padding:"1rem",
             height: "auto",
-            width:"30rem",
+            width:{
+              xs: 1, sm: "30rem", md: "20rem",lg:"28rem",xl:"32rem"
+            },
             display: "flex",
             justifyContent:"center",
             flexDirection: "column",
