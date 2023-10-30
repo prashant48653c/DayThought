@@ -6,14 +6,17 @@ const jwt = require("jsonwebtoken")
 const cookieParser = require("cookie-parser")
 const cors = require("cors")
 const Authenticate = require("../middleware/authenticate.js")
-
-const dotenv=require("dotenv")
+const multer = require("multer")
+const dotenv = require("dotenv")
+ 
 //---------------------------------------
 const router = express.Router();
 router.use(cookieParser())
-dotenv.config({path: "./.env"})
+dotenv.config({ path: "./.env" })
 
 router.use(express.json())
+
+// Increase the request size limit to 20MB
 
 router.use(cors({
     credentials: true,
@@ -21,37 +24,37 @@ router.use(cors({
     methods: "GET,PUT,POST,PATCH,DELETE"
 }))
 
-
+ 
 
 //provide all the data of the database
 
 router.get('/alldata', async (req, res) => {
     try {
-      const data = await User.find({});
-  
-      if (!data) {
-        return res.status(404).json({ message: 'No data found' });
-      }
-  
-      res.status(200).json({ data });
+        const data = await User.find({});
+
+        if (!data) {
+            return res.status(404).json({ message: 'No data found' });
+        }
+
+        res.status(200).json({ data });
     } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Internal Server Error' });
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
-  });
+});
 
 
 
 // /userdata is the route where the information about user and the blog will be sent. this endpoint is responsible when user view other user's profile and when view it's own profile and tries to login 
 
-router.get("/getdata", Authenticate , async (req, res) => {
-   let token=await req.cookies.jwtoken
-   console.log(token)
-    const data =await req.rootUser
+router.get("/getdata", Authenticate, async (req, res) => {
+    let token = await req.cookies.jwtoken
+    console.log(token)
+    const data = await req.rootUser
     console.log(req.cookies)
     if (!data) {
         res.status(400).json({ error: "New user" })
-    }else{
+    } else {
         res.status(200).send(data)
 
     }
@@ -82,7 +85,7 @@ router.post("/login", async (req, res) => {
                 expires: new Date(Date.now() + 25892000000),
                 httpOnly: true,
                 credentials: "include",
-                secure:true
+                secure: true
             })
 
             res.status(200).json({ messege: "Succesfull login" })
@@ -127,12 +130,12 @@ router.post("/signup", async (req, res) => {
 
 
 router.get("/logout", async (req, res) => {
-    try{
-        res.clearCookie('jwtoken', { path: '/'});
+    try {
+        res.clearCookie('jwtoken', { path: '/' });
         console.log("cookie was cleared")
         res.status(200).json({ messege: "User has been logged out" })
-    }catch(err){
-console.log(err)
+    } catch (err) {
+        console.log(err)
     }
 
 
@@ -140,26 +143,26 @@ console.log(err)
 
 
 
-router.post("/postBlog",Authenticate, async (req, res) => {
+router.post("/postBlog", Authenticate, async (req, res) => {
 
     try {
-        const { heading,blog } =await req.body;
-        
+        const { heading, blog } = await req.body;
+
         if (!heading || !blog) {
             res.status(400).json({ messege: "Missing heading or blog" });
         }
-        const userId= await req.userID
-        
+        const userId = await req.userID
+
         const oldUser = await User.findOne({ _id: userId })
-         
+
         if (!oldUser) {
             res.status(404).json({ messege: "User not found" })
-        }else{
-            const blogs=await oldUser.takeBlog(heading,blog)
+        } else {
+            const blogs = await oldUser.takeBlog(heading, blog)
             await oldUser.save()
             res.status(200).json({ messege: "Succesfully posted the blog" })
         }
-      
+
     } catch (err) {
         console.log(err)
         res.status(404).json({ messege: "Cannot post the blog" })
@@ -175,43 +178,59 @@ router.post("/postBlog",Authenticate, async (req, res) => {
 
 
 
-router.patch("/updateProfile",Authenticate, async (req, res) => {
+router.patch("/updateProfile", Authenticate, async (req, res) => {
 
     try {
-        const {name,description ,profilePicture} =await req.body;
-        
-        
-        const userId= await req.userID
-        
+        const { name, description } = await req.body;
+
+
+        const userId = await req.userID
+
         const oldUser = await User.findOne({ _id: userId })
-         
+
         if (!oldUser) {
             res.status(404).json({ messege: "User not found" })
-        }else{
+        } else {
             const result = await User.findOneAndUpdate({ _id: userId }, {
                 $set: {
-                  name: name,
-                  description: description
+                    name: name,
+                    description: description
                 }
-              });
-              await oldUser.save()
-               
-              res.status(200).json({ message: "Profile updated successfully" });
+            });
+            await oldUser.save()
+
+            res.status(200).json({ message: "Profile updated successfully" });
 
         }
-      
+
     } catch (err) {
         console.log(err)
         res.status(404).json({ messege: "Cannot post the blog" })
     }
-
-
-
-
-
-
-
+ 
 })
+
+
+const upload = multer({
+    storage: multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, "uploads");
+        },
+        filename: function (req, file, cb) {
+            cb(null, file.fieldname + "--" + Date.now() + ".jpg");
+        }
+    }),
+    limits: { fileSize: 10 * 1024 * 1024 } // 10 megabytes
+}).single("profilePicture");
+
+
+
+router.patch("/profile",upload, (req, res) => {
+    if(upload){
+        res.send("Uplaoded")
+    }
+     
+});
 
 
 

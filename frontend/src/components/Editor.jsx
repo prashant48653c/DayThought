@@ -1,29 +1,61 @@
 import * as React from 'react';
-import InputLabel from '@mui/material/InputLabel';
+ 
 import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
+import profilePic from '../assets/ph.webp'
+ 
 import TextField from '@mui/material/TextField';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import IconButton from '@mui/material/IconButton';
+ 
 import Paper from '@mui/material/Paper';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
+ 
 import Typography from '@mui/material/Typography';
 import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+ 
 import Button from '@mui/material/Button';
 import { useState } from 'react'; 
 import axios from 'axios'; // 
-import { Input } from '@mui/material';
+import { Box, Input } from '@mui/material';
 
 export default function Profile() {
-  const URL = "http://localhost:4000/updateProfile";
 
+  const URL = "http://localhost:4000/updateProfile";
+  const ppURL = "http://localhost:4000/profile";
+const [profilePicture,setProfilePicture]=useState('')
   const [user, setUser] = useState({
     name: '',
     description: '',
     
   });
+
+  const fileInputRef = React.useRef(null);
+
+  const handleFileSelect = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      try {
+        const formData = new FormData();
+        formData.append('profilePicture', file); // 'profilePicture' is the field name on the server
+  
+        const response = await axios.patch(ppURL, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data', // Correct content type for file upload
+          },
+          withCredentials: true,
+        });
+  
+        console.log(response);
+      } catch (err) {
+        console.error(`Error at update profile picture request: ${err}`);
+      }
+    }
+  };
+  
+  
+
+  const triggerFileInput = () => {
+    fileInputRef.current.click();
+  };
+
 
   const updateUser = async (e) => {
     e.preventDefault();
@@ -50,8 +82,9 @@ export default function Profile() {
           display: "flex",
           flexDirection: "column",
           width: "32rem",
+          height:"auto",
           gap: "2rem",
-          position: "absolute",
+          position: "fixed",
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
@@ -61,6 +94,43 @@ export default function Profile() {
         }}>
         <Typography variant="h4" color="initial">Edit Profile</Typography>
 
+        <Box sx={{
+          minWidth:"100%",
+          display:'flex',
+          flexDirection:'column',
+          gap:"2rem"
+           
+        }} >
+
+        <Box sx={{
+            minWidth:"100%",
+            display:'flex',
+            justifyContent:"center"
+        }} >
+  
+  <div>
+      <div
+        onClick={triggerFileInput}
+        style={{
+          border: '2px solid #ccc',
+          padding: '10px',
+          cursor: 'pointer',
+          width: '200px',
+          textAlign: 'center',
+        }}
+      >
+       <img className='profile-pic-blog edit-blog '  src={profilePic} alt="" />
+      </div>
+      <input
+        type="file"
+        accept="image/*"
+        style={{ display: 'none' }}
+        onChange={handleFileSelect}
+        ref={fileInputRef}
+      />
+      </div>
+        </Box>
+         
         <TextField
           id="input-with-icon-textfield"
           label="Username"
@@ -95,12 +165,7 @@ export default function Profile() {
 
          
 
-        <TextareaAutosize
-          InputProps={{
-            style: { padding: '10px' },
-          }}
-          inputProps={{ style: { padding: '10px' }}
-         } sx={{ margin: "1rem" }} minRows={10} placeholder="Write about yourself" />
+     
 
         <Button
           variant="contained"
@@ -109,7 +174,14 @@ export default function Profile() {
         >
           Submit
         </Button>
+
+
+        </Box>
+      
       </Paper>
     </form>
-  );
-}
+  )
+        
+        } 
+
+    
