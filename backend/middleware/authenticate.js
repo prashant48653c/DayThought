@@ -9,7 +9,7 @@ const dotenv=require("dotenv")
 const router = express.Router()
 router.use(cookieParser());
 dotenv.config({path: "./.env"})
-
+router.use('/uploads', express.static('uploads'));
 const Authenticate = async (req, res, next) => {
 
     try {

@@ -20,7 +20,7 @@ export default function Profile() {
 
   const URL = "http://localhost:4000/updateProfile";
   const ppURL = "http://localhost:4000/profile";
-const [profilePicture,setProfilePicture]=useState('')
+ 
   const [user, setUser] = useState({
     name: '',
     description: '',
@@ -34,11 +34,11 @@ const [profilePicture,setProfilePicture]=useState('')
     if (file) {
       try {
         const formData = new FormData();
-        formData.append('profilePicture', file); // 'profilePicture' is the field name on the server
+        formData.append('profilePicture', file); 
   
         const response = await axios.patch(ppURL, formData, {
           headers: {
-            'Content-Type': 'multipart/form-data', // Correct content type for file upload
+            'Content-Type': 'multipart/form-data',  
           },
           withCredentials: true,
         });

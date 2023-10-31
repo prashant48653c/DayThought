@@ -8,7 +8,7 @@ const cors = require("cors")
 const Authenticate = require("../middleware/authenticate.js")
 const multer = require("multer")
 const dotenv = require("dotenv")
- 
+ const path=require("path")
 //---------------------------------------
 const router = express.Router();
 router.use(cookieParser())
@@ -24,7 +24,7 @@ router.use(cors({
     methods: "GET,PUT,POST,PATCH,DELETE"
 }))
 
- 
+
 
 //provide all the data of the database
 
@@ -49,9 +49,9 @@ router.get('/alldata', async (req, res) => {
 
 router.get("/getdata", Authenticate, async (req, res) => {
     let token = await req.cookies.jwtoken
-    console.log(token)
+
     const data = await req.rootUser
-    console.log(req.cookies)
+
     if (!data) {
         res.status(400).json({ error: "New user" })
     } else {
@@ -80,7 +80,7 @@ router.post("/login", async (req, res) => {
         }
         if (matched) {
             const token = await oldUser.generateAuthToken()
-            // console.log(token)
+
             res.cookie("jwtoken", token, {
                 expires: new Date(Date.now() + 25892000000),
                 httpOnly: true,
@@ -207,8 +207,11 @@ router.patch("/updateProfile", Authenticate, async (req, res) => {
         console.log(err)
         res.status(404).json({ messege: "Cannot post the blog" })
     }
- 
+
 })
+
+const imagePath=__filename
+console.log(imagePath)
 
 
 const upload = multer({
@@ -217,23 +220,41 @@ const upload = multer({
             cb(null, "uploads");
         },
         filename: function (req, file, cb) {
-            cb(null, file.fieldname + "--" + Date.now() + ".jpg");
+            // You can modify the filename as needed; for example, using the user's ID and a timestamp
+            cb(null, `profile-${req.userID}-${Date.now()}.jpg`);
         }
     }),
     limits: { fileSize: 10 * 1024 * 1024 } // 10 megabytes
 }).single("profilePicture");
 
+router.patch("/profile", Authenticate, upload, async (req, res) => {
 
+    if (req.file) {
+        const userId = await req.userID;
+        console.log(req.file.filename)
+        const imagePath=__filename
+        console.log(imagePath)
 
-router.patch("/profile",upload, (req, res) => {
-    if(upload){
-        res.send("Uplaoded")
+        try {
+
+            const result = await User.findOneAndUpdate({ _id: userId }, {
+                $set: {
+                    profilePicture: `../uploads/${req.file.filename}`
+                }
+            });
+
+            if (result) {
+                res.status(200).json({ message: "Profile updated successfully" });
+            } else {
+                res.status(404).json({ message: "User not found" });
+            }
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({ message: "An error occurred while updating the profile" });
+        }
+    } else {
+        res.status(400).json({ message: "Please upload a valid profile picture" });
     }
-     
 });
 
-
-
-
-
-module.exports = router
+module.exports = router;
