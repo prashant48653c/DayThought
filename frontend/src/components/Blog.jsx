@@ -19,7 +19,7 @@ return <h1>LOading</h1>
 
   return (
     <>
-      <Box mt={5} pt={5} mx={20}>
+      <Box mt={5} pt={5} mx={{xs:3,sm:5,md:7,lg:9,xl:12}}>
         <Box py={4} pb={3} sx={{
           display: "flex",
           gap: "1rem",

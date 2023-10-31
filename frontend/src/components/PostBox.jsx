@@ -23,7 +23,7 @@ const PostBox = () => {
 
       <Grid my={2} sx={{
         columnGap:{
-          xs: 1, sm: 2, md: 6,lg:6
+          xs: 1, sm: 2, md: 1,lg:6
         },
         
         border:"1px solid pink",
@@ -31,7 +31,7 @@ const PostBox = () => {
         position:"relative",
         display:"flex",
         justifyContent:{
-          xs:"center",sm:"flex-start",md:"flex-start",lg:"flex-start"
+          xs:"center",sm:"center",md:"center",lg:"center"
         }
          
       }}  height={"auto"} py={5} container columnSpacing={0}>
@@ -42,28 +42,35 @@ const PostBox = () => {
 
 
 <Grid  key={i}  p={2}   sx={{
-            padding:"1rem",
+            padding:"1rem 1rem",
             height: "auto",
             maxWidth:"100%",
             display: "flex",
             justifyContent:"center",
             flexDirection: "column",
             cursor:"pointer",
+            width:{
+              xs: "40rem", sm: "30rem", md: "28rem",lg:"28rem",xl:"32rem"
+            },
            
           }}>
           <Paper onClick={goToBlog}   sx={{
-            padding:"1rem",
+          padding:"1.5rem 1rem",
             height: "auto",
-            width:{
-              xs: 1, sm: "30rem", md: "20rem",lg:"28rem",xl:"32rem"
-            },
+            
             display: "flex",
             justifyContent:"center",
             flexDirection: "column",
             cursor:"pointer",
             background:"#f8f9fa"
           }} >
+            <div style={{
+              display:"flex",
+              justifyContent:"center"
+            }} >
             <img className='post-box-img' src={f} alt="" />
+            </div>
+            
             <Typography variant="p" py={1} color="initial">Business, Travel — July 2, 2020</Typography>
             <Typography variant="p" sx={{
               fontWeight: "700",

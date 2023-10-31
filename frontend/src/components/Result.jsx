@@ -40,14 +40,7 @@ function Result() {
 
 
       }}    >
-        <Grid container spacing={3} sx={{
-          overflow: "hidden",
-
-        }} >
-          {/* First Column */}
-          <Grid item xs={12} sm={8}>
-            {/* Content for the first column */}
-
+       
             {
               result.map((user, i) => {
 
@@ -58,7 +51,7 @@ function Result() {
 
 
 
-                      <Paper onClick={(e) => goToBlog(e, blog, user)}  key={j} style={{ width: '100%', minHeight: "15rem", height: 'auto', border: '1px solid #ddd', padding: '1.4rem',cursor:"pointer", display: "flex", gap: "1.4rem", margin: "2rem 0" }}>
+                      <Paper onClick={(e) => goToBlog(e, blog, user)}  key={j} style={{ width: '100%', minHeight: "15rem", height: 'auto', border: '1px solid #ddd', padding: '1.9rem',cursor:"pointer", display: "flex", gap: "1.4rem", margin: "3rem 0" }}>
                         <img style={{
                           maxWidth: "30%",
                           display: "inline-block",
@@ -115,30 +108,13 @@ function Result() {
 
 
 
-          </Grid>
-
-          {/* Second Column */}
-          <Grid item xs={12} sm={4} >
-            {/* Content for the second column */}
-            <Paper style={{ width: "31%", border: '1px solid #ddd', height: "100%", margin: "2rem 0", padding: '16px', position: "absolute", display: "flex", flexDirection: "column" }}>
-              <Typography pb={3} variant="h4" color="initial">Check out our other product </Typography>
-
-
-               
-              <a href="https://streamzone25.netlify.app/" className='link'>Streamzone</a>
-              <a href="https://prashant1.netlify.app/" className='link' >
-
-                PRAXANT.
-
-              </a>
+           
+            
 
 
 
 
-
-            </Paper>
-          </Grid>
-        </Grid>
+             
       </Box>
     );
   }

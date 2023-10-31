@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import profilePic from '../assets/ph.webp'
 import 'swiper/css';
@@ -52,12 +52,12 @@ const Trending = () => {
       console.error("An error occurred:", error);
     }
   };
-
+ 
   useEffect(() => {
-
+ 
     getData()
    
-  }, [])
+  }, [ ])
 
 
 
@@ -127,28 +127,43 @@ const Trending = () => {
 
                         <Grid item xs={6}>
 
-                          <img src="https://thumbs.dreamstime.com/b/journal-notecopy-placed-outdoors-evening-against-defocused-lights-city-writing-blogging-student-concept-selective-169657469.jpg" className='swiper-img' alt="" />
+                          <img src={profilePic} className='swiper-img' alt="" />
 
                         </Grid>
                         <Grid item xs={6}>
 
                           <Typography variant="p" sx={{
                             fontSize: "1.7rem",
-                            margin: "  1rem  0"
+                            margin: " 1rem  0"
                           }} color="initial">
                             <b>Business-Travel</b>  <em>July 05</em>
                           </Typography>
 
 
                           <Typography variant="p" sx={{
+                            
                             fontWeight: "700",
                             margin: " 1rem 0",
-                            fontSize: "4rem",
-                            lineHeight: "4.8rem",
-                            maxWidth: "95%"
+                            fontSize:{xs:"2.5rem",sm:"2.6rem",md:"4rem",lg:"4rem"},
+                            lineHeight: {xs:"2.4rem",sm:"3rem",md:"4rem",lg:"4rem"},
+                            maxWidth:{xs:"100%",sm:"100%",md:"95%",lg:"95%"  },
                           }} color="initial">
-          <code dangerouslySetInnerHTML={{ __html: user.heading }} />
+ 
 
+<div style={{
+  padding:"2rem 0"
+}}>
+ {
+                           ( window.innerWidth < 500)?
+
+<code dangerouslySetInnerHTML={{ __html: (user.heading).slice(0, 30)  }} />
+
+:
+<code dangerouslySetInnerHTML={{ __html: (user.heading).slice(0, 50)    }} />
+
+                       }
+
+</div>   
                           </Typography>
 
 
@@ -160,7 +175,17 @@ const Trending = () => {
 
                             margin: "1rem 0"
                           }} color="initial">
-             <code dangerouslySetInnerHTML={{ __html: (user.blog).slice(0, 300) + " . . . ." }} />
+
+                            {
+                           ( window.innerWidth < 500)?
+
+<code dangerouslySetInnerHTML={{ __html: (user.blog).slice(0, 130) + " . . . ." }} />
+
+:
+<code dangerouslySetInnerHTML={{ __html: (user.blog).slice(0, 300) + " . . . ." }} />
+
+                            }
+  
 
                           </Typography>
 
@@ -169,7 +194,7 @@ const Trending = () => {
                             display: "flex",
                             gap: "1rem",
                             alignItems: "center",
-                            margin: " 1rem 0",
+                            margin: " .6rem 0",
                          
                           }}
                             onClick={(e) => goToProfile(e, elem)}
