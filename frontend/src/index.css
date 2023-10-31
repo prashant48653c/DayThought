@@ -32,7 +32,7 @@ img{
   height: 3rem;
   background-color: black; 
   border-radius: 40rem;
-  border:1px solid greenyellow
+ 
 
 }
 #email{
@@ -93,7 +93,7 @@ padding: 2rem;
 }
 .swiper-img{
 width: 95%;
-  height: 35rem;
+   height: 35rem;
   border-radius: 1rem;
 }
 

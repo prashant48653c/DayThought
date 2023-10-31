@@ -17,7 +17,7 @@ const PostBox = () => {
     <Container sx={{
       margin:" 0",
       padding:0,
-      border:"1px solid black",
+      
        maxWidth:"100%"
     }} >
 
@@ -26,7 +26,7 @@ const PostBox = () => {
           xs: 1, sm: 2, md: 1,lg:6
         },
         
-        border:"1px solid pink",
+        
      
         position:"relative",
         display:"flex",

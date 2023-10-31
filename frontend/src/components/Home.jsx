@@ -15,7 +15,7 @@ const Home = () => {
 
       <Box sx={{
         width: "100%",
-        border:"11px solid green",
+        
         padding: "0 2rem",
         display: "flex",
         flexDirection: "column",
@@ -31,6 +31,8 @@ const Home = () => {
         <Popular />
       </Box>
       <Contact />
+      
+
 
 
 

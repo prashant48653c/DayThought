@@ -46,7 +46,7 @@ const Navbar = () => {
         <Button onClick={()=>navigate("/")} color="inherit">Home</Button>
 
 
-        <Button onClick={()=>navigate("/profile")} color="inherit">Profile</Button>
+        
 
         <Button onClick={()=>navigate("/write")} color="inherit">Write</Button>
 

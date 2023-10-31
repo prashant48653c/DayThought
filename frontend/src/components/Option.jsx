@@ -11,10 +11,12 @@ import { Paper } from '@mui/material';
 import axios from 'axios';
 import {setToggle,setpopMessege} from '../Slices/popSlicer'
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export default function Option() {
   const URL="http://localhost:4000/logout";
   const dispatch=useDispatch()
+  const navigate=useNavigate()
 
   const logout=async(e)=>{
     e.preventDefault()
@@ -58,7 +60,7 @@ export default function Option() {
           <ListItemIcon>
             <InboxIcon />
           </ListItemIcon>
-          <ListItemText primary="Profile" />
+          <ListItemText onClick={()=>navigate("/profile")} primary="Profile" />
         </ListItemButton>
         <ListItemButton
           selected={selectedIndex === 1}

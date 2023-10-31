@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios';
 import { setAllUser, setBlog, setUserData } from '../Slices/homeSlicer';
+import f from '../assets/f.jpeg'
 
 
 const Trending = () => {
@@ -71,7 +72,7 @@ const Trending = () => {
       <Box sx={{
         margin: 0,
         padding: 0,
-        border:"1px solid black",
+      
         width: "100%"
       }} >
         <Box py={8} sx={{
@@ -119,21 +120,22 @@ const Trending = () => {
                     }}>
                       
 
-                      <Grid container style={{
+                      <Grid  container style={{
                         width: "100%",
-                        height: "35rem",
-                        cursor: "pointer"
+                        maxHeight: "35rem",
+                        cursor: "pointer",
+                        
                       }} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 1 }} onClick={(e) => goToBlog(e, elem, user)}   >
 
                         <Grid item xs={6}>
 
-                          <img src={profilePic} className='swiper-img' alt="" />
+                          <img src={f} className='swiper-img' alt="" />
 
                         </Grid>
                         <Grid item xs={6}>
 
                           <Typography variant="p" sx={{
-                            fontSize: "1.7rem",
+                            fontSize: "1.5rem",
                             margin: " 1rem  0"
                           }} color="initial">
                             <b>Business-Travel</b>  <em>July 05</em>
@@ -144,7 +146,7 @@ const Trending = () => {
                             
                             fontWeight: "700",
                             margin: " 1rem 0",
-                            fontSize:{xs:"2.5rem",sm:"2.6rem",md:"4rem",lg:"4rem"},
+                            fontSize:{xs:"2rem",sm:"2.6rem",md:"4rem",lg:"4rem"},
                             lineHeight: {xs:"2.4rem",sm:"3rem",md:"4rem",lg:"4rem"},
                             maxWidth:{xs:"100%",sm:"100%",md:"95%",lg:"95%"  },
                           }} color="initial">
@@ -154,11 +156,12 @@ const Trending = () => {
   padding:"2rem 0"
 }}>
  {
-                           ( window.innerWidth < 500)?
+   ( window.innerWidth < 500)?
 
 <code dangerouslySetInnerHTML={{ __html: (user.heading).slice(0, 30)  }} />
 
-:
+: 
+ 
 <code dangerouslySetInnerHTML={{ __html: (user.heading).slice(0, 50)    }} />
 
                        }
@@ -180,9 +183,20 @@ const Trending = () => {
                            ( window.innerWidth < 500)?
 
 <code dangerouslySetInnerHTML={{ __html: (user.blog).slice(0, 130) + " . . . ." }} />
-
 :
+(window.innerWidth < 400)
+?
+<code dangerouslySetInnerHTML={{ __html: (user.blog).slice(0, 80) + " . . . ." }} />
+:
+(window.innerWidth < 300)
+?
+<code dangerouslySetInnerHTML={{ __html: (user.blog).slice(0, 50) + " . . . ." }} />:
+(window.innerWidth < 350)
+?
+<code dangerouslySetInnerHTML={{ __html: (user.blog).slice(0, 70) + " . . . ." }} />:
+ 
 <code dangerouslySetInnerHTML={{ __html: (user.blog).slice(0, 300) + " . . . ." }} />
+
 
                             }
   
