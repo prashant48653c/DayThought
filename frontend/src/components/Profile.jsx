@@ -87,7 +87,7 @@ let arr=[1,2,3,4,5,6,4]
             flexDirection: "column",
             alignItems: "center"
           }} >
-            <img src={userData.profilePicture.path} className='profile-pic-blog edit-blog ' alt="" />
+            <img src={userData.profilePicture} className='profile-pic-blog edit-blog ' alt="" />
             <div  >
               <Typography sx={{
                 display: "block",

@@ -9,6 +9,7 @@ const Authenticate = require("../middleware/authenticate.js")
 const multer = require("multer")
 const dotenv = require("dotenv")
  const path=require("path")
+ const bodyParser=require("body-parser")
 //---------------------------------------
 const router = express.Router();
 router.use(cookieParser())
@@ -23,6 +24,10 @@ router.use(cors({
     origin: "http://localhost:5173",
     methods: "GET,PUT,POST,PATCH,DELETE"
 }))
+
+router.use(bodyParser.urlencoded({extended:false}))
+router.use(bodyParser.json())
+router.use('/',express.static('uploads'))
 
 
 
@@ -210,8 +215,7 @@ router.patch("/updateProfile", Authenticate, async (req, res) => {
 
 })
 
-const imagePath=__filename
-console.log(imagePath)
+ 
 
 
 const upload = multer({
@@ -239,7 +243,7 @@ router.patch("/profile", Authenticate, upload, async (req, res) => {
 
             const result = await User.findOneAndUpdate({ _id: userId }, {
                 $set: {
-                    profilePicture: `../uploads/${req.file.filename}`
+                    profilePicture: `http://localhost:4000/${req.file.filename}`
                 }
             });
 
