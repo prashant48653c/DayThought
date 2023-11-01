@@ -6,28 +6,18 @@ import { AppBar, Toolbar, Typography, Button, IconButton, TextField, ButtonGroup
 
 import Option from './Option';
 import Search from './Search';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
 
   const navigate=useNavigate();
   const [option,setOption]=useState(false)
 
+ 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
@@ -39,18 +29,20 @@ const Navbar = () => {
       <Toolbar>
      
 
-        <IconButton edge="start" color="inherit" aria-label="menu">
-       TheDayThought
+        <IconButton  onClick={()=>navigate("/")} edge="start" color="inherit" aria-label="menu">
+       DayThought
         </IconButton>
     
-        <Button onClick={()=>navigate("/")} color="inherit">Home</Button>
-
-
-        
-
+     
         <Button onClick={()=>navigate("/write")} color="inherit">Write</Button>
 
-        <Button onClick={()=>navigate("/join")} color="inherit">Join</Button>
+
+    
+           <Button onClick={()=>navigate("/join")} color="inherit">Join</Button>
+
+      
+ 
+        
 
         <IconButton edge="start" color="inherit" aria-label="menu">
       

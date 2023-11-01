@@ -68,6 +68,7 @@
 
 
       if (allUser.data) {
+
       return (
       <Box sx={{
       margin: 0,
@@ -248,6 +249,10 @@
 
       </Box>
       );
+      }else{
+            return(
+                  <p>Loading</p>
+            )
       }
 
       }

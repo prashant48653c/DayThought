@@ -20,7 +20,7 @@ app.use(express.json())
 // ----------------------------------
 app.use(cors({
     credentials:true,
-    origin:"http://localhost:5173",
+    origin:"http://192.168.1.68:5173/",
     methods:"GET,PUT,POST,PATCH,DELETE"
 }))
 // ----------------------------------
@@ -28,7 +28,7 @@ connectDB()
 
 //------------------------------------
 app.get("/",(req,res)=>{
-    res.send(":Home page")
+    res.send("Home page")
 })
 
 

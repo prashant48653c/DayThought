@@ -21,7 +21,7 @@ router.use(express.json())
 
 router.use(cors({
     credentials: true,
-    origin: "http://localhost:5173",
+    origin: "http://192.168.1.68:5173",
     methods: "GET,PUT,POST,PATCH,DELETE"
 }))
 
