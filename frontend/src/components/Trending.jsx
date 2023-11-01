@@ -48,6 +48,7 @@
 
       const data = await response.data;
       dispatch(setAllUser(data))
+      console.log(data,"data")
 
       } catch (error) {
       console.error("An error occurred:", error);
@@ -57,6 +58,8 @@
       useEffect(() => {
 
       getData()
+console.log("trending")
+
 
       }, [])
 

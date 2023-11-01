@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { AppBar, Toolbar, Typography, Button, IconButton, TextField, ButtonGroup } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, IconButton, TextField, ButtonGroup, Divider } from '@mui/material';
  import { useNavigate } from 'react-router-dom';
  import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 //  import SearchIcon from '@mui/icons-material/SearchIcon';
@@ -44,12 +44,17 @@ const Navbar = () => {
  
         
 
-        <IconButton edge="start" color="inherit" aria-label="menu">
       
-        </IconButton>
-     <Person2OutlinedIcon onClick={()=>setOption(option=== true ? false : true)} />
+       <Search/>
+       <Divider orientation='center' >
+       <Person2OutlinedIcon sx={{
+        cursor:"pointer"
+       }} onClick={()=>setOption(option=== true ? false : true)} />
 
-  <Search/>
+       </Divider>
+      
+    
+      
       </Toolbar>
 
       

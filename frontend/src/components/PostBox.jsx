@@ -12,7 +12,6 @@ const PostBox = () => {
    
     navigate("/blog")
 }
-
   return (
     <Container sx={{
       margin:" 0",

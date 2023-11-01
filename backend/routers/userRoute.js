@@ -21,7 +21,7 @@ router.use(express.json())
 
 router.use(cors({
     credentials: true,
-    origin: "http://192.168.1.68:5173",
+    origin: "http://localhost:5173",
     methods: "GET,PUT,POST,PATCH,DELETE"
 }))
 
@@ -36,7 +36,7 @@ router.use('/',express.static('uploads'))
 router.get('/alldata', async (req, res) => {
     try {
         const data = await User.find({});
-
+        console.log(data)
         if (!data) {
             return res.status(404).json({ message: 'No data found' });
         }
@@ -235,9 +235,8 @@ router.patch("/profile", Authenticate, upload, async (req, res) => {
 
     if (req.file) {
         const userId = await req.userID;
-        console.log(req.file.filename)
-        const imagePath=__filename
-        console.log(imagePath)
+       
+          
 
         try {
 
