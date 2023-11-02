@@ -7,6 +7,7 @@ import { setToggle, setpopMessege } from '../Slices/popSlicer';
 import { useDispatch } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import SendIcon from '@mui/icons-material/Send';
+import Category from './Category';
 const Write = () => {
   const dispatch=useDispatch()
 const navigate=useNavigate()
@@ -50,6 +51,7 @@ const navigate=useNavigate()
   
   return (
     <>
+   
 <ReactQuill placeholder='Your Title' className='write-blog-heading' onChange={(value) => setBlogData({ ...blogdata, heading: value })} value={blogdata.heading} theme="snow"  />
 
 <ReactQuill placeholder='Your Thought'  className='write-blog'  theme="snow" value={blogdata.blog}  onChange={(value) => setBlogData({ ...blogdata, blog: value })} />

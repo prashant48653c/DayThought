@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Trending from './Trending'
 import Navbar from './Navbar'
 import PostBox from './PostBox'
@@ -9,7 +9,65 @@ import Contact from './Contact'
 import Footer from './Footer'
 import Blog from './Blog'
 import { Box } from '@mui/material'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { setProfileData } from '../Slices/homeSlicer'
+import axios from 'axios'
+
+
 const Home = () => {
+ 
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+  const [fetchToggle,setFetchToggle]=useState(true)
+
+  const URL = "http://localhost:4000/getdata";
+
+  const getData = async () => {
+    try {
+    
+      const response = await axios.get(URL, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        withCredentials: true
+      });
+
+      const data = response.data;
+      dispatch(setProfileData(data))
+      
+    
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  } 
+
+  useEffect(()=>{
+    getData()
+
+  },[])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <>
 

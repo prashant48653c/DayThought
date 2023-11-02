@@ -7,12 +7,13 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-import { setUserData, setBlog } from '../Slices/homeSlicer'
+import { setUserData, setBlog, setProfileData } from '../Slices/homeSlicer'
 
 
 const Profile = () => {
 
-  const { userData, blog } = useSelector((state) => state.home)
+  const { userData, blog,profileData } = useSelector((state) => state.home)
+
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -23,44 +24,17 @@ const Profile = () => {
     dispatch(setBlog(elem))
     navigate("/blog")
   }
-  const [fetchToggle,setFetchToggle]=useState(true)
 
-  const URL = "http://localhost:4000/getdata";
-
-  const getData = async () => {
-    try {
-    
-      const response = await axios.get(URL, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        withCredentials: true
-      });
-
-      const data = response.data;
-      dispatch(setUserData(data))
-      setFetchToggle(false)
-    } catch (error) {
-      console.error("An error occurred:", error);
-    }
-  }  
-
-  useEffect(() => {
-    if(fetchToggle){
-      getData();
-      console.log(userData)
-     
-    }
+ 
   
    
 
-  }, [getData])
+ 
 
-let arr=[1,2,3,4,5,6,4]
+ 
 
 
-  if (userData.blogs) {
+  if (profileData.blogs) {
     return (
       <>
 
@@ -89,7 +63,7 @@ let arr=[1,2,3,4,5,6,4]
             alignItems: "center"
           }} >
             <div className='profile-pic-blog   ' >
-            <img src={userData.profilePicture}  alt="" />
+            <img src={profileData.profilePicture}  alt="" />
             </div>
            
 
@@ -98,10 +72,10 @@ let arr=[1,2,3,4,5,6,4]
                 display: "block",
                 fontWeight: 700,
                 fontSize: "2rem"
-              }} variant="p" color="initial">{userData.name}</Typography>
+              }} variant="p" color="initial">{profileData.name}</Typography>
               <Typography gutterBottom variant="p" p={1} sx={{
                 fontSize: "1.5rem"
-              }} color="initial">{userData.description}</Typography>
+              }} color="initial">{profileData.description}</Typography>
               <div>
               <Link 
                 to={"/editor"}
@@ -137,7 +111,7 @@ let arr=[1,2,3,4,5,6,4]
 
 
  {
-  userData.blogs.map((elem,i)=>[
+  profileData.blogs.map((elem,i)=>[
 
 
 <Grid  key={i}  p={2}   sx={{
@@ -203,12 +177,12 @@ let arr=[1,2,3,4,5,6,4]
               gap: "1rem",
               alignItems: "center"
             }} >
-              <img src={userData.profilePicture} className='profile-pic' alt="" />
+              <img src={profileData.profilePicture} className='profile-pic' alt="" />
               <div>
                 <Typography sx={{
                   display: "block"
-                }} variant="p" color="initial">{userData.name}</Typography>
-                <Typography variant="p" color="initial">{userData.description}</Typography>
+                }} variant="p" color="initial">{profileData.name}</Typography>
+                <Typography variant="p" color="initial">{profileData.description}</Typography>
               </div>
             </Box>
 

@@ -9,12 +9,12 @@ import Search from './Search';
 import { useSelector } from 'react-redux';
 
 const Navbar = () => {
-  const { userData } = useSelector(state => state.home)
+  const { profileData } = useSelector(state => state.home)
 
   const navigate = useNavigate();
   const [option, setOption] = useState(false)
 
-console.log(userData)
+console.log(profileData)
 
 
 
@@ -36,7 +36,7 @@ console.log(userData)
 
           <Stack spacing={1} >
           {
-            userData.profilePicture ?
+            profileData.profilePicture ?
      (
           <>
             <Button startIcon={<CreateIcon/>}  onClick={() => navigate("/write")} color="inherit">Write</Button>
@@ -61,8 +61,8 @@ console.log(userData)
         <Search />
           <IconButton >
             {
-              userData.profilePicture  ?
-              <img className="profile-pic"   onClick={() => setOption(option === true ? false : true)} aria-label="menu button" src={userData.profilePicture} alt="dd" />
+              profileData.profilePicture  ?
+              <img className="profile-pic"   onClick={() => setOption(option === true ? false : true)} aria-label="menu button" src={profileData.profilePicture} alt="dd" />
               :
               <Person2OutlinedIcon sx={{
                 cursor: "pointer"

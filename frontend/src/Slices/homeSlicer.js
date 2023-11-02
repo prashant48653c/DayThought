@@ -8,6 +8,7 @@ export const homeSlicer = createSlice({
     userData:[],
     blog:[],
     allUser:[],
+    profileData:[]
     
   },
   reducers: {
@@ -22,10 +23,15 @@ export const homeSlicer = createSlice({
   setAllUser:(state,action)=>{
     state.allUser=action.payload
 
-},}
+}, setProfileData:(state,action)=>{
+  state.profileData=action.payload
+
+},
+
+}
 })
 
 // Action creators are generated for each case reducer function
-export const { setUserData,setBlog,setAllUser } = homeSlicer.actions
+export const { setUserData,setBlog,setAllUser,setProfileData } = homeSlicer.actions
 
 export default homeSlicer.reducer
