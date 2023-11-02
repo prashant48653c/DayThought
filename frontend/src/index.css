@@ -33,6 +33,7 @@
    height: 3rem;
    background-color: black;
    border-radius: 40rem;
+   object-fit: cover;
 
 
  }
@@ -67,10 +68,18 @@
  }
 
  .profile-pic-blog {
-   width: 8rem;
-   height: 8rem;
-   border-radius: 40rem;
-   margin-bottom: 1rem;
+  
+ 
+   overflow: hidden;
+   width: 10rem;
+   height: 10rem;
+   clip-path: circle(46.8% at 50% 50%);
+   
+ }
+ .profile-pic-blog img{
+  transform: scale(2);
+ 
+ 
  }
 
  .blog-img {
@@ -97,10 +106,7 @@
    padding: 2rem;
  }
 
- .edit-blog:hover {
-   opacity: .6;
-   cursor: pointer;
- }
+  
 
  .swiper-img {
    width: 95%;

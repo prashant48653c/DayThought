@@ -61,7 +61,7 @@ console.log(userData)
         <Search />
           <IconButton  onClick={() => setOption(option === true ? false : true)} >
             {
-              userData ?
+              userData > 0 ?
               <img className="profile-pic"  aria-label="menu button" src={userData.profilePicture} alt="dd" />
               :
               <Person2OutlinedIcon sx={{

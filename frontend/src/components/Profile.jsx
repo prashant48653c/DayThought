@@ -174,15 +174,19 @@ let arr=[1,2,3,4,5,6,4]
               fontWeight: "700",
               fontSize: "1.8rem",
               lineHeight: "2.1rem"
-            }} color="initial">{elem.heading}</Typography>
+            }} color="initial">
+
+<code dangerouslySetInnerHTML={{ __html: (elem.heading).slice(0, 39) }} />
+            </Typography>
 
             <Typography py={1} variant="p" sx={{
               fontSize: "1.4rem",
               fontWeight: 400,
               color: "rgb(136, 136, 136)"
             }} color="initial">
+<code dangerouslySetInnerHTML={{ __html: (elem.blog).slice(0, 100) }} />
 
-              {(elem.blog).slice(0,110)}
+           
             </Typography>
 
             <Box py={1} pb={3} sx={{
@@ -190,12 +194,12 @@ let arr=[1,2,3,4,5,6,4]
               gap: "1rem",
               alignItems: "center"
             }} >
-              <img src={profilePic} className='profile-pic' alt="" />
+              <img src={userData.profilePicture} className='profile-pic' alt="" />
               <div>
                 <Typography sx={{
                   display: "block"
-                }} variant="p" color="initial">Prashant Acharya</Typography>
-                <Typography variant="p" color="initial">CEO and Developer</Typography>
+                }} variant="p" color="initial">{userData.name}</Typography>
+                <Typography variant="p" color="initial">{userData.description}</Typography>
               </div>
             </Box>
 
@@ -204,6 +208,13 @@ let arr=[1,2,3,4,5,6,4]
 
 
 ])
+}
+
+{
+  (!userData?.blogs?.length < 0 ) &&
+  (
+    <p>No blog posted yet</p>
+  )
 }
 
       

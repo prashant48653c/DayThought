@@ -3,9 +3,10 @@ import { TextField, Button, Container, Typography, Paper } from '@mui/material';
 import axios from 'axios'
 import { useDispatch,useSelector } from 'react-redux';
 import { setToggle, setpopMessege } from '../Slices/popSlicer';
+import { useNavigate } from 'react-router-dom';
 function Login() {
   const dispatch=useDispatch()
-  
+  const navigate=useNavigate()
 
   const URL="http://localhost:4000/login";
   const [userData, setUserData]=useState({
@@ -36,6 +37,7 @@ function Login() {
   
       dispatch(setpopMessege(pop))
       dispatch(setToggle(true))
+      navigate("/profile")
        
     } catch (err) {
       console.error(`Error at login POST request: ${err}`);

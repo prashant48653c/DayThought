@@ -18,10 +18,10 @@ const userSchema = new mongoose.Schema({
         required: true
     },
 
-    profilePicture: { type: String , default:"https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-man-wearing-glasses-is-wearing-colorful-background-image_2905240.jpg"},
+    profilePicture: { type: String , default:"https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg"},
     description: {
         type: String,
-        default:"New User at The Day Thought"
+        default:"New User at Day Thought"
 
     },
     blogs:[{

@@ -44,7 +44,7 @@ const dispatch=useDispatch()
           },
           withCredentials: true,
         });
-        const pop=response.data.messege
+        const pop="Updated profile picture"
         dispatch(setToggle(true))
         dispatch(setpopMessege(pop ))
   
