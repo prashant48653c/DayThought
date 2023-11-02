@@ -32,6 +32,10 @@ const userSchema = new mongoose.Schema({
         blog:{
             type:String,
             required:true
+        },
+        uploadDate:{
+            type:String,
+            
         }
     }],
     tokens:[{
@@ -62,9 +66,9 @@ userSchema.methods.generateAuthToken = async function (){
 
 
 
-userSchema.methods.takeBlog = async function (heading,blog){
+userSchema.methods.takeBlog = async function (heading,blog,uploadDate){
     try{
-            this.blogs=this.blogs.concat({heading,blog})
+            this.blogs=this.blogs.concat({heading,blog,uploadDate})
             await this.save()
             console.log("Blog was added")
             return this.blogs

@@ -144,7 +144,7 @@ const Profile = () => {
             <img className='post-box-img' src={f} alt="" />
             </div>
             
-            <Typography variant="p" py={1} color="initial">Business, Travel — July 2, 2020</Typography>
+            <Typography variant="p" py={1} color="initial">{elem.uploadDate}</Typography>
             <Typography variant="p" sx={{
               fontWeight: "700",
               fontSize: "1.8rem",

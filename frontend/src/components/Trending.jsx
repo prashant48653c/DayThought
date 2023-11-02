@@ -65,7 +65,7 @@
 
 
 
-
+ 
 
 
 
@@ -142,7 +142,7 @@
             fontSize: "1.5rem",
             margin: " 1rem  0"
             }} color="initial">
-            <b>Business-Travel</b>  <em>July 05</em>
+             <em>{user.uploadDate}</em>
             </Typography>
 
 

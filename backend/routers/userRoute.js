@@ -153,6 +153,10 @@ router.get("/logout", async (req, res) => {
 
 router.post("/postBlog", Authenticate, async (req, res) => {
 
+
+
+
+
     try {
         const { heading, blog } = await req.body;
 
@@ -166,7 +170,28 @@ router.post("/postBlog", Authenticate, async (req, res) => {
         if (!oldUser) {
             res.status(404).json({ messege: "User not found" })
         } else {
-            const blogs = await oldUser.takeBlog(heading, blog)
+
+         
+            const timestamp = Date.now();
+const date = new Date(timestamp);
+
+const monthNames = [
+  'January', 'February', 'March', 'April', 'May', 'June', 'July',
+  'August', 'September', 'October', 'November', 'December'
+];
+
+const monthName = monthNames[date.getMonth()];
+const day =  date.getDate();
+
+const uploadDate=`${monthName} ${day}`
+console.log(uploadDate)
+
+
+
+//////////////////////////////////
+
+
+            const blogs = await oldUser.takeBlog(heading, blog ,uploadDate)
             await oldUser.save()
             res.status(200).json({ messege: "Succesfully posted the blog" })
         }
