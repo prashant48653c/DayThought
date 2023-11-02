@@ -36,7 +36,7 @@ router.use('/',express.static('uploads'))
 router.get('/alldata', async (req, res) => {
     try {
         const data = await User.find({});
-        console.log(data)
+        
         if (!data) {
             return res.status(404).json({ message: 'No data found' });
         }

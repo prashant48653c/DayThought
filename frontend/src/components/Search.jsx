@@ -19,10 +19,11 @@ const Search = () => {
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
     if (e.key === 'Enter') {
-
+      console.log("clicked enter")
       searchBlogs();
     }
   }
+ 
 
   const searchBlogs = async () => {
     const results = await allUser.data.filter(user =>
@@ -30,9 +31,9 @@ const Search = () => {
     );
 
     dispatch(setResult(results))
-    if (result.length > 0) {
+    
       navigate('/search');
-    }
+    
 
   }
 
