@@ -10,6 +10,8 @@ import DraftsIcon from '@mui/icons-material/Drafts';
 import { Paper } from '@mui/material';
 import axios from 'axios';
 import {setToggle,setpopMessege} from '../Slices/popSlicer'
+import {setUserData} from '../Slices/homeSlicer'
+
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -32,6 +34,8 @@ const {userData}=useSelector(state=>state.home)
      
       dispatch(setpopMessege(pop))
       dispatch(setToggle(true))
+      dispatch(setUserData([]))
+      navigate("/")
       
     } catch (error) {
       console.log(error)
@@ -42,7 +46,7 @@ const {userData}=useSelector(state=>state.home)
   }
   const [selectedIndex, setSelectedIndex] = React.useState(1);
 
- if(userData ){
+ if(userData.profilePicture){
   return (
     <Paper elevation={4} sx={{ width: '100%',
      maxWidth: 200,

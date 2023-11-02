@@ -2,7 +2,7 @@ import { Box, IconButton, Typography } from '@mui/material'
 import React from 'react'
 import {ImFacebook} from 'react-icons/im'
 import {ImLinkedin2} from 'react-icons/im'
-import {AiOutlineInstagram} from 'react-icons/ai'
+import {AiOutlineGithub} from 'react-icons/ai'
 
 const Footer = () => {
   return (
@@ -26,9 +26,9 @@ const Footer = () => {
          display:"flex",
          gap:"2rem",
     }}>
- <a href="https://www.instagram.com/prashant34223/" target="_blank" rel="noopener noreferrer">
+ <a href="https://github.com/prashant48653c" target="_blank" rel="noopener noreferrer">
 
- <AiOutlineInstagram size={35}/>
+ <AiOutlineGithub size={35}/>
 
 </a>
     </IconButton>

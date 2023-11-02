@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Typography, Button, IconButton, TextField, ButtonGroup
 import { useNavigate } from 'react-router-dom';
 import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 //  import SearchIcon from '@mui/icons-material/SearchIcon';
-
+import CreateIcon from '@mui/icons-material/Create';
 import Option from './Option';
 import Search from './Search';
 import { useSelector } from 'react-redux';
@@ -39,7 +39,7 @@ console.log(userData)
             userData.profilePicture ?
      (
           <>
-            <Button  onClick={() => navigate("/write")} color="inherit">Write</Button>
+            <Button startIcon={<CreateIcon/>}  onClick={() => navigate("/write")} color="inherit">Write</Button>
 
           </>
           )
@@ -59,10 +59,10 @@ console.log(userData)
        
         <Box display={"flex"} alignItems={"center"} gap={2} justifyContent={"flex-end"} width={"100%"} >
         <Search />
-          <IconButton  onClick={() => setOption(option === true ? false : true)} >
+          <IconButton >
             {
-              userData > 0 ?
-              <img className="profile-pic"  aria-label="menu button" src={userData.profilePicture} alt="dd" />
+              userData.profilePicture  ?
+              <img className="profile-pic"   onClick={() => setOption(option === true ? false : true)} aria-label="menu button" src={userData.profilePicture} alt="dd" />
               :
               <Person2OutlinedIcon sx={{
                 cursor: "pointer"

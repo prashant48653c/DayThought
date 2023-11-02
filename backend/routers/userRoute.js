@@ -75,10 +75,12 @@ router.post("/login", async (req, res) => {
 
     try {
         const { password, email } = req.body;
+        
         if (!password || !email) {
             res.status(400).json({ messege: "Fill the credential properly" });
         }
         const oldUser = await User.findOne({ email: email })
+        
         const matched = await bcript.compare(password, oldUser.password)
         if (!oldUser) {
             res.status(404).json({ messege: "User not found" })
@@ -96,6 +98,7 @@ router.post("/login", async (req, res) => {
             res.status(200).json({ messege: "Succesfull login" })
         }
     } catch (err) {
+        console.log(err)
         res.status(404).json({ messege: "Cannot Login" })
     }
 

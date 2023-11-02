@@ -103,10 +103,11 @@ let arr=[1,2,3,4,5,6,4]
                 fontSize: "1.5rem"
               }} color="initial">{userData.description}</Typography>
               <div>
-              <Link
+              <Link 
                 to={"/editor"}
                 sx={{
                   color: "green",
+                  
 
                 }} >Edit Profile</Link>
               </div>
@@ -175,8 +176,14 @@ let arr=[1,2,3,4,5,6,4]
               fontSize: "1.8rem",
               lineHeight: "2.1rem"
             }} color="initial">
+{
+  ((elem.heading).length > 26 ) ?(
+<code dangerouslySetInnerHTML={{ __html: (elem.heading).slice(0, 26).concat("...") }} />
 
-<code dangerouslySetInnerHTML={{ __html: (elem.heading).slice(0, 39) }} />
+  ):
+
+<code dangerouslySetInnerHTML={{ __html: (elem.heading).slice(0, 26)  }} />
+  }
             </Typography>
 
             <Typography py={1} variant="p" sx={{
@@ -184,9 +191,11 @@ let arr=[1,2,3,4,5,6,4]
               fontWeight: 400,
               color: "rgb(136, 136, 136)"
             }} color="initial">
-<code dangerouslySetInnerHTML={{ __html: (elem.blog).slice(0, 100) }} />
+ 
+  
+<code dangerouslySetInnerHTML={{ __html: (elem.blog).slice(0, 94).concat("...") }} />
 
-           
+   
             </Typography>
 
             <Box py={1} pb={3} sx={{

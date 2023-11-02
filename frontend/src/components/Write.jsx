@@ -6,7 +6,7 @@ import 'react-quill/dist/quill.snow.css';
 import { setToggle, setpopMessege } from '../Slices/popSlicer';
 import { useDispatch } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
-
+import SendIcon from '@mui/icons-material/Send';
 const Write = () => {
   const dispatch=useDispatch()
 const navigate=useNavigate()
@@ -54,10 +54,14 @@ const navigate=useNavigate()
 
 <ReactQuill placeholder='Your Thought'  className='write-blog'  theme="snow" value={blogdata.blog}  onChange={(value) => setBlogData({ ...blogdata, blog: value })} />
 
-<Button 
+
+
+<Button color='inherit'
+endIcon={ <SendIcon /> }
 onClick={postBlog}
 sx={{
-    margin:"2rem"
+    margin:" 3rem 2rem ",
+    textAlign:"center"
 }} variant='contained'>Publish</Button>
     </>
   )
