@@ -15,9 +15,11 @@ import Button from '@mui/material/Button';
 import { useState } from 'react'; 
 import axios from 'axios'; // 
 import { Box, Input } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { setToggle, setpopMessege } from '../Slices/popSlicer';
 
 export default function Profile() {
-
+const dispatch=useDispatch()
   const URL = "http://localhost:4000/updateProfile";
   const ppURL = "http://localhost:4000/profile";
  
@@ -42,6 +44,9 @@ export default function Profile() {
           },
           withCredentials: true,
         });
+        const pop=response.data.messege
+        dispatch(setToggle(true))
+        dispatch(setpopMessege(pop ))
   
         console.log(response);
       } catch (err) {

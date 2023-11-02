@@ -28,7 +28,7 @@ function Signup() {
   
       const pop=await response.data.messege
       dispatch(setToggle(true))
-      dispatch(setpopMessege(pop))
+      dispatch(setpopMessege(pop + " Please Login"))
     } catch (err) {
       console.log(`Error at post in login ${err}`);
     }

@@ -18,7 +18,8 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const goToBlog = (e, elem) => {
-    e.preventDefault()
+    
+    console.log(elem)
     dispatch(setBlog(elem))
     navigate("/blog")
   }
@@ -87,22 +88,29 @@ let arr=[1,2,3,4,5,6,4]
             flexDirection: "column",
             alignItems: "center"
           }} >
-            <img src={userData.profilePicture} className='profile-pic-blog edit-blog ' alt="" />
+            <div className='profile-pic-blog   ' >
+            <img src={userData.profilePicture}  alt="" />
+            </div>
+           
+
             <div  >
               <Typography sx={{
                 display: "block",
                 fontWeight: 700,
                 fontSize: "2rem"
               }} variant="p" color="initial">{userData.name}</Typography>
-              <Typography variant="p" p={1} sx={{
+              <Typography gutterBottom variant="p" p={1} sx={{
                 fontSize: "1.5rem"
               }} color="initial">{userData.description}</Typography>
+              <div>
               <Link
                 to={"/editor"}
                 sx={{
                   color: "green",
 
                 }} >Edit Profile</Link>
+              </div>
+             
             </div>
 
 
@@ -128,7 +136,7 @@ let arr=[1,2,3,4,5,6,4]
 
 
  {
-  arr.map((elem,i)=>[
+  userData.blogs.map((elem,i)=>[
 
 
 <Grid  key={i}  p={2}   sx={{
@@ -144,7 +152,7 @@ let arr=[1,2,3,4,5,6,4]
             },
            
           }}>
-          <Paper onClick={goToBlog}   sx={{
+          <Paper onClick={(e)=>goToBlog(e,elem)}   sx={{
           padding:"1.5rem 1rem",
             height: "auto",
             
@@ -166,13 +174,16 @@ let arr=[1,2,3,4,5,6,4]
               fontWeight: "700",
               fontSize: "1.8rem",
               lineHeight: "2.1rem"
-            }} color="initial">How to be happy in life</Typography>
+            }} color="initial">{elem.heading}</Typography>
 
             <Typography py={1} variant="p" sx={{
               fontSize: "1.4rem",
               fontWeight: 400,
               color: "rgb(136, 136, 136)"
-            }} color="initial">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</Typography>
+            }} color="initial">
+
+              {(elem.blog).slice(0,110)}
+            </Typography>
 
             <Box py={1} pb={3} sx={{
               display: "flex",

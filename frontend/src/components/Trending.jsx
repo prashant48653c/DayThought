@@ -166,7 +166,7 @@
 
             :
 
-            <code dangerouslySetInnerHTML={{ __html: (user.heading).slice(0, 50) }} />
+            <code dangerouslySetInnerHTML={{ __html: (user.heading).slice(0, 45) }} />
 
             }
 

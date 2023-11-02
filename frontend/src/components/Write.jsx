@@ -5,18 +5,19 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { setToggle, setpopMessege } from '../Slices/popSlicer';
 import { useDispatch } from 'react-redux';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Write = () => {
   const dispatch=useDispatch()
-
+const navigate=useNavigate()
    
 
 
   const URL="http://localhost:4000/postblog";
 
   const [blogdata, setBlogData] = useState({
-    heading:"Your title",
-    blog:"Share your thought of the day"
+    heading:"  ",
+    blog:" "
   });
 
   const postBlog =async(e)=>{
@@ -36,6 +37,7 @@ const Write = () => {
    
       dispatch(setToggle(true))
       dispatch(setpopMessege(pop))
+      navigate("/profile")
     } catch (err) {
       console.error(`Error at login POST request: ${err}`);
     }
@@ -50,7 +52,7 @@ const Write = () => {
     <>
 <ReactQuill placeholder='Your Title' className='write-blog-heading' onChange={(value) => setBlogData({ ...blogdata, heading: value })} value={blogdata.heading} theme="snow"  />
 
-<ReactQuill className='write-blog'  theme="snow" value={blogdata.blog}  onChange={(value) => setBlogData({ ...blogdata, blog: value })} />
+<ReactQuill placeholder='Your Thought'  className='write-blog'  theme="snow" value={blogdata.blog}  onChange={(value) => setBlogData({ ...blogdata, blog: value })} />
 
 <Button 
 onClick={postBlog}

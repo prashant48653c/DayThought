@@ -11,7 +11,7 @@ const Blog = () => {
   const dispatch=useDispatch()
   const {userData,blog} = useSelector((state) => state.home);
 
-   
+   console.log(blog)
 
   if(!blog && !userData){
 return <h1>LOading</h1>
@@ -27,13 +27,18 @@ return <h1>LOading</h1>
           flexDirection: "column",
           alignItems: "center"
         }}>
-          <img src={profilePic} className='profile-pic-blog' alt="" />
+
+
+<div className='profile-pic-blog   ' >
+            <img src={userData.profilePicture}  alt="" />
+            </div>
+
           <div>
             <Typography sx={{
               display: "block",
               fontWeight: 600
             }} variant="h4" color="initial">{userData.name}</Typography>
-            <Typography variant="h6" color="initial">{userData.description}</Typography>
+            <Typography variant="h6"  color="initial">{userData.description}</Typography>
           </div>
         </Box>
 

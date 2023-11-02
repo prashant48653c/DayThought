@@ -40,8 +40,8 @@ const Search = () => {
   return (
     <>
       <TextField
-       
-        placeholder="Search for user"
+        
+        placeholder="Search user"
         variant="outlined"
         size="small"
         onChange={handleSearch}
