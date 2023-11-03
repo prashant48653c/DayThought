@@ -38,7 +38,7 @@ const navigate=useNavigate()
    
       dispatch(setToggle(true))
       dispatch(setpopMessege(pop))
-      navigate("/profile")
+      navigate("/")
     } catch (err) {
       console.error(`Error at login POST request: ${err}`);
     }

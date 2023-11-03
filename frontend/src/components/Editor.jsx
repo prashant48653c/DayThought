@@ -15,17 +15,18 @@ import Button from '@mui/material/Button';
 import { useState } from 'react'; 
 import axios from 'axios'; // 
 import { Box, Input } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setToggle, setpopMessege } from '../Slices/popSlicer';
 
 export default function Profile() {
 const dispatch=useDispatch()
+const {profileData}=useSelector(state=>state.home)
   const URL = "http://localhost:4000/updateProfile";
   const ppURL = "http://localhost:4000/profile";
  
   const [user, setUser] = useState({
-    name: '',
-    description: '',
+    name: profileData.name,
+    description: profileData.description,
     
   });
 
@@ -72,6 +73,9 @@ const dispatch=useDispatch()
         },
         withCredentials: true,
       });
+      const pop="Updated profile info"
+      dispatch(setToggle(true))
+      dispatch(setpopMessege(pop ))
    
     } catch (err) {
       console.error(`Error at update Patch request: ${err}`);
@@ -124,7 +128,7 @@ const dispatch=useDispatch()
           textAlign: 'center',
         }}
       >
-       <img className='profile-pic-blog edit-blog '  src={profilePic} alt="" />
+       <img className='profile-pic-blog edit-blog '  src={profileData.profilePicture} alt="" />
       </div>
       <input
         type="file"
@@ -164,8 +168,8 @@ const dispatch=useDispatch()
             ),
           }}
           variant="standard"
-          value={user.description} // Set the value from the user state
-          onChange={(e) => setUser({ ...user, description: e.target.value })} // Update the user state
+          value={user.description}
+          onChange={(e) => setUser({ ...user, description: e.target.value })} 
         />
 
          
@@ -177,7 +181,7 @@ const dispatch=useDispatch()
           color="primary"
           onClick={updateUser}
         >
-          Submit
+          Update
         </Button>
 
 

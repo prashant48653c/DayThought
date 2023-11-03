@@ -86,7 +86,8 @@ const Home = () => {
 
         <Trending/>
         <PostBox />
-        <Popular />
+        <Trending/>
+
       </Box>
       <Contact />
       

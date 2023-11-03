@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { TextField, Button, Container, Typography, Paper } from '@mui/material';
 import axios from 'axios'
-import {useDispatch} from 'react-redux'
- import {setToggle,setpopMessege} from '../Slices/popSlicer'
+import {useDispatch, useSelector} from 'react-redux'
+ import {setJoinSwitch, setToggle,setpopMessege} from '../Slices/popSlicer'
 function Signup() {
   const dispatch=useDispatch()
+
+  const {joinSwitch}=useSelector(state=>state.pop)
  
   const URL="http://localhost:4000/signup";
   const [userData, setUserData]=useState({
@@ -29,6 +31,7 @@ function Signup() {
       const pop=await response.data.messege
       dispatch(setToggle(true))
       dispatch(setpopMessege(pop + " Please Login"))
+      dispatch(setJoinSwitch(true))
     } catch (err) {
       console.log(`Error at post in login ${err}`);
     }

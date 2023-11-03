@@ -37,7 +37,7 @@ function Login() {
   
       dispatch(setpopMessege(pop))
       dispatch(setToggle(true))
-      navigate("/profile")
+      navigate("/")
        
     } catch (err) {
       console.error(`Error at login POST request: ${err}`);

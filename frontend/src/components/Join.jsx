@@ -3,9 +3,13 @@ import Login from './Login'
 import Signup from './Signup'
 import { Box, Button, ButtonGroup } from '@mui/material'
 import Popup from './Popup'
+import { useDispatch, useSelector } from 'react-redux'
+import { setJoinSwitch } from '../Slices/popSlicer'
 
 const Join = () => {
+   const dispatch=useDispatch()
     const [status,setStatus]=useState(false)
+    const {joinSwitch}=useSelector(state=>state.pop)
   return (
     <>
     <Box sx={{
@@ -14,15 +18,15 @@ const Join = () => {
         textAlign:"center"
     }} >
  <ButtonGroup  >
-    <Button onClick={()=>setStatus(true)} >Login</Button>
-    <Button  onClick={()=>setStatus(false)} >Signup</Button>
+    <Button onClick={()=>dispatch(setJoinSwitch(true))} >Login</Button>
+    <Button  onClick={()=>dispatch(setJoinSwitch(false))} >Signup</Button>
     </ButtonGroup>
 
 
 
     {
    
-   status ?
+   joinSwitch ?
    <Login/> :
    <Signup/>
 
