@@ -73,7 +73,6 @@ const Home = () => {
 
       <Box sx={{
         width: "100%",
-        
         padding: "0 2rem",
         display: "flex",
         flexDirection: "column",

@@ -36,6 +36,10 @@ const userSchema = new mongoose.Schema({
         uploadDate:{
             type:String,
             
+        },
+        blogImg:{
+            type:String,
+            default:"https://fusiondream.com/wp-content/themes/ryse/assets/images/no-image/No-Image-Found-400x264.png"
         }
     }],
     tokens:[{
@@ -45,6 +49,9 @@ const userSchema = new mongoose.Schema({
         }
  } ]
 
+},
+{
+timestamps:true
 })
 
 
@@ -66,9 +73,9 @@ userSchema.methods.generateAuthToken = async function (){
 
 
 
-userSchema.methods.takeBlog = async function (heading,blog,uploadDate){
+userSchema.methods.takeBlog = async function (heading,blog,uploadDate,blogImg){
     try{
-            this.blogs=this.blogs.concat({heading,blog,uploadDate})
+            this.blogs=this.blogs.concat({heading,blog,uploadDate,blogImg})
             await this.save()
             console.log("Blog was added")
             return this.blogs

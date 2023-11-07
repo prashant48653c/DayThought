@@ -8,8 +8,8 @@ const cors = require("cors")
 const Authenticate = require("../middleware/authenticate.js")
 const multer = require("multer")
 const dotenv = require("dotenv")
- const path=require("path")
- const bodyParser=require("body-parser")
+const path = require("path")
+const bodyParser = require("body-parser")
 //---------------------------------------
 const router = express.Router();
 router.use(cookieParser())
@@ -25,18 +25,34 @@ router.use(cors({
     methods: "GET,PUT,POST,PATCH,DELETE"
 }))
 
-router.use(bodyParser.urlencoded({extended:false}))
+router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
-router.use('/',express.static('uploads'))
+router.use('/', express.static('uploads'))
 
 
 
 //provide all the data of the database
 
+// upload middlware for imgage 
+const upload = multer({
+    storage: multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, "uploads");
+        },
+        filename: function (req, file, cb) {
+            // You can modify the filename as needed; for example, using the user's ID and a timestamp
+            cb(null, `profile-${req.userID}-${Date.now()}.jpg`);
+        }
+    }),
+    limits: { fileSize: 10 * 1024 * 1024 } // 10 megabytes
+}).single("profilePicture");
+
+///////////////////////////////////////////////
+
 router.get('/alldata', async (req, res) => {
     try {
         const data = await User.find({});
-        
+
         if (!data) {
             return res.status(404).json({ message: 'No data found' });
         }
@@ -75,12 +91,12 @@ router.post("/login", async (req, res) => {
 
     try {
         const { password, email } = req.body;
-        
+
         if (!password || !email) {
             res.status(400).json({ messege: "Fill the credential properly" });
         }
         const oldUser = await User.findOne({ email: email })
-        
+
         const matched = await bcript.compare(password, oldUser.password)
         if (!oldUser) {
             res.status(404).json({ messege: "User not found" })
@@ -151,14 +167,12 @@ router.get("/logout", async (req, res) => {
 
 
 
-router.post("/postBlog", Authenticate, async (req, res) => {
-
-
-
+router.post("/postBlog", Authenticate, upload, async (req, res) => {
 
 
     try {
-        const { heading, blog } = await req.body;
+        const { heading, blog, blogImg } = await req.body;
+        console.log(blogImg)
 
         if (!heading || !blog) {
             res.status(400).json({ messege: "Missing heading or blog" });
@@ -171,29 +185,32 @@ router.post("/postBlog", Authenticate, async (req, res) => {
             res.status(404).json({ messege: "User not found" })
         } else {
 
-         
-            const timestamp = Date.now();
-const date = new Date(timestamp);
+            if (req.file) {
+                console.log(req.file, "file ")
 
-const monthNames = [
-  'January', 'February', 'March', 'April', 'May', 'June', 'July',
-  'August', 'September', 'October', 'November', 'December'
-];
+                const timestamp = Date.now();
+                const date = new Date(timestamp);
 
-const monthName = monthNames[date.getMonth()];
-const day =  date.getDate();
+                const monthNames = [
+                    'January', 'February', 'March', 'April', 'May', 'June', 'July',
+                    'August', 'September', 'October', 'November', 'December'
+                ];
 
-const uploadDate=`${monthName} ${day}`
-console.log(uploadDate)
+                const monthName = monthNames[date.getMonth()];
+                const day = date.getDate();
+
+                const uploadDate = `${monthName} ${day}`
+                console.log(uploadDate)
+                const blogImg = `http://localhost:4000/${req.file.filename}`
 
 
+                //////////////////////////////////
 
-//////////////////////////////////
 
-
-            const blogs = await oldUser.takeBlog(heading, blog ,uploadDate)
-            await oldUser.save()
-            res.status(200).json({ messege: "Succesfully posted the blog" })
+                const blogs = await oldUser.takeBlog(heading, blog, uploadDate, blogImg)
+                await oldUser.save()
+                res.status(200).json({ messege: "Succesfully posted the blog" })
+            }
         }
 
     } catch (err) {
@@ -238,33 +255,22 @@ router.patch("/updateProfile", Authenticate, async (req, res) => {
 
     } catch (err) {
         console.log(err)
-        res.status(404).json({ messege: "Cannot post the blog" })
+        res.status(404).json({ messege: "Cannot update profile" })
     }
 
 })
 
- 
 
 
-const upload = multer({
-    storage: multer.diskStorage({
-        destination: function (req, file, cb) {
-            cb(null, "uploads");
-        },
-        filename: function (req, file, cb) {
-            // You can modify the filename as needed; for example, using the user's ID and a timestamp
-            cb(null, `profile-${req.userID}-${Date.now()}.jpg`);
-        }
-    }),
-    limits: { fileSize: 10 * 1024 * 1024 } // 10 megabytes
-}).single("profilePicture");
+
+
 
 router.patch("/profile", Authenticate, upload, async (req, res) => {
 
     if (req.file) {
         const userId = await req.userID;
-       
-          
+
+
 
         try {
 
