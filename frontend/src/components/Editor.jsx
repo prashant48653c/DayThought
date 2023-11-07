@@ -21,8 +21,8 @@ import { setToggle, setpopMessege } from '../Slices/popSlicer';
 export default function Profile() {
 const dispatch=useDispatch()
 const {profileData}=useSelector(state=>state.home)
-  const URL = "http://localhost:4000/updateProfile";
-  const ppURL = "http://localhost:4000/profile";
+  const URL = "https://daythought.vercel.app/updateProfile";
+  const ppURL = "https://daythought.vercel.app/profile";
  
   const [user, setUser] = useState({
     name: profileData.name,

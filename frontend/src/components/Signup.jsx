@@ -8,7 +8,7 @@ function Signup() {
 
   const {joinSwitch}=useSelector(state=>state.pop)
  
-  const URL="http://localhost:4000/signup";
+  const URL="https://daythought.vercel.app/signup";
   const [userData, setUserData]=useState({
     name:'',
     email:'',

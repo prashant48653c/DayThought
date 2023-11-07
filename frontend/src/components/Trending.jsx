@@ -34,7 +34,7 @@
 
             navigate("/profile")
             }
-            const URL = "http://localhost:4000/alldata";
+            const URL = "https://daythought.vercel.app/alldata";
 
             const getData = async () => {
             try {

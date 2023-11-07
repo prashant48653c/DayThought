@@ -21,7 +21,7 @@ router.use(express.json())
 
 router.use(cors({
     credentials: true,
-    origin: "http://localhost:5173",
+    origin: "https://thedaythought.vercel.app/",
     methods: "GET,PUT,POST,PATCH,DELETE"
 }))
 
@@ -201,7 +201,7 @@ router.post("/postBlog", Authenticate, upload, async (req, res) => {
 
                 const uploadDate = `${monthName} ${day}`
                 console.log(uploadDate)
-                const blogImg = `http://localhost:4000/${req.file.filename}`
+                const blogImg = `http://daythought.vercel.app/${req.file.filename}`
 
 
                 //////////////////////////////////
@@ -276,7 +276,7 @@ router.patch("/profile", Authenticate, upload, async (req, res) => {
 
             const result = await User.findOneAndUpdate({ _id: userId }, {
                 $set: {
-                    profilePicture: `http://localhost:4000/${req.file.filename}`
+                    profilePicture: `https://daythought.vercel.app/${req.file.filename}`
                 }
             });
 

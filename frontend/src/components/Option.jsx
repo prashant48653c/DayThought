@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 export default function Option() {
-  const URL="http://localhost:4000/logout";
+  const URL="https://daythought.vercel.app/logout";
   const dispatch=useDispatch()
   const navigate=useNavigate()
 const {profileData}=useSelector(state=>state.home)
