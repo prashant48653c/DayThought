@@ -106,7 +106,7 @@ router.post("/login", async (req, res) => {
 
             res.cookie("jwtoken", token, {
                 expires: new Date(Date.now() + 25892000000),
-                httpOnly: true,
+                httpOnly: false,
                 credentials: "include",
                 secure: true
             })
@@ -201,7 +201,7 @@ router.post("/postBlog", Authenticate, upload, async (req, res) => {
 
                 const uploadDate = `${monthName} ${day}`
                 console.log(uploadDate)
-                const blogImg = `http://daythought.vercel.app/${req.file.filename}`
+                const blogImg = `https://daythought.vercel.app/${req.file.filename}`
 
 
                 //////////////////////////////////
