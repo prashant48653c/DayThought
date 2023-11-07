@@ -21,7 +21,7 @@ router.use(express.json())
 
 router.use(cors({
     credentials: true,
-    origin: "https://thedaythought.vercel.app/",
+    origin: "https://thedaythought.vercel.app",
     methods: "GET,PUT,POST,PATCH,DELETE"
 }))
 
