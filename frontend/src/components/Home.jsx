@@ -23,7 +23,7 @@ const Home = () => {
   const navigate = useNavigate();
   const [fetchToggle,setFetchToggle]=useState(true)
 
-  const URL = "https://daythought.vercel.app/getdata";
+  const URL = "http://localhost:4000/getdata";
 
   const getData = async () => {
     try {

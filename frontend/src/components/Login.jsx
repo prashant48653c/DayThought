@@ -8,7 +8,7 @@ function Login() {
   const dispatch=useDispatch()
   const navigate=useNavigate()
 
-  const URL="https://daythought.vercel.app/login";
+  const URL="http://localhost:4000/login";
   const [userData, setUserData]=useState({
     name:'',
     email:'',

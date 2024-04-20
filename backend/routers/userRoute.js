@@ -21,7 +21,7 @@ router.use(express.json())
 
 router.use(cors({
     credentials: true,
-    origin: "https://thedaythought.vercel.app",
+    origin: "http://localhost:5173",
     methods: "GET,PUT,POST,PATCH,DELETE"
 }))
 
@@ -138,13 +138,13 @@ router.post("/signup", async (req, res) => {
         if (existedUser) {
             res.status(409).json({ messege: "Email already registered" })
         }
-        const newUser = new User({ name, password, email, profilePicture, description })
+        const newUser =await new User({ name, password, email, profilePicture, description })
         await newUser.save()
         res.status(201).json({ messege: "Succesfully registered!" })
 
-
+        console.log(name)
     } catch (err) {
-        console.log(err)
+        console.log("Login error",err)
         res.status(401).json({ messege: "Unable to register" });
     }
 
@@ -167,26 +167,26 @@ router.get("/logout", async (req, res) => {
 
 
 
-router.post("/postBlog", Authenticate, upload, async (req, res) => {
+router.post("/postBlog", Authenticate,  async (req, res) => {
 
 
     try {
-        const { heading, blog, blogImg } = await req.body;
-        console.log(blogImg)
+        const { heading, blog } = await req.body;
+        console.log(heading)
 
         if (!heading || !blog) {
             res.status(400).json({ messege: "Missing heading or blog" });
         }
         const userId = await req.userID
-
         const oldUser = await User.findOne({ _id: userId })
 
         if (!oldUser) {
             res.status(404).json({ messege: "User not found" })
         } else {
+            console.log(oldUser)
 
-            if (req.file) {
-                console.log(req.file, "file ")
+          
+               
 
                 const timestamp = Date.now();
                 const date = new Date(timestamp);
@@ -201,16 +201,15 @@ router.post("/postBlog", Authenticate, upload, async (req, res) => {
 
                 const uploadDate = `${monthName} ${day}`
                 console.log(uploadDate)
-                const blogImg = `https://daythought.vercel.app/${req.file.filename}`
-
+                
 
                 //////////////////////////////////
 
-
-                const blogs = await oldUser.takeBlog(heading, blog, uploadDate, blogImg)
+                
+                await oldUser.uploadBlog(heading, blog, uploadDate);
                 await oldUser.save()
                 res.status(200).json({ messege: "Succesfully posted the blog" })
-            }
+           
         }
 
     } catch (err) {
@@ -276,7 +275,7 @@ router.patch("/profile", Authenticate, upload, async (req, res) => {
 
             const result = await User.findOneAndUpdate({ _id: userId }, {
                 $set: {
-                    profilePicture: `https://daythought.vercel.app/${req.file.filename}`
+                    profilePicture: `http://localhost:4000/${req.file.filename}`
                 }
             });
 

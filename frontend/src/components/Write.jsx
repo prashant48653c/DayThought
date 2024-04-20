@@ -14,7 +14,7 @@ const navigate=useNavigate()
    
 
 
-  const URL="https://daythought.vercel.app/postblog";
+  const URL="http://localhost:4000/postblog";
 
   const [blogdata, setBlogData] = useState({
     heading:"  ",

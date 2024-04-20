@@ -60,6 +60,7 @@ timestamps:true
 
 userSchema.methods.generateAuthToken = async function (){
     try{
+        console.log("Trying to login")
         let token= jwt.sign({_id: this._id}, process.env.SECRET)
             this.tokens=this.tokens.concat({token:token})
             await this.save()
@@ -73,9 +74,11 @@ userSchema.methods.generateAuthToken = async function (){
 
 
 
-userSchema.methods.takeBlog = async function (heading,blog,uploadDate,blogImg){
+userSchema.methods.uploadBlog = async function (heading,blog,uploadDate){
     try{
-            this.blogs=this.blogs.concat({heading,blog,uploadDate,blogImg})
+        console.log("Trying to post blog")
+
+            this.blogs=this.blogs.concat({heading,blog,uploadDate})
             await this.save()
             console.log("Blog was added")
             return this.blogs
